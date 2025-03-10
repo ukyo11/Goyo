@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/goyo/static/css/main.612c6b6e.css",
+    "main.js": "/goyo/static/js/main.418c6fd4.js",
+    "index.html": "/goyo/index.html",
+    "main.612c6b6e.css.map": "/goyo/static/css/main.612c6b6e.css.map",
+    "main.418c6fd4.js.map": "/goyo/static/js/main.418c6fd4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.612c6b6e.css",
+    "static/js/main.418c6fd4.js"
+  ]
+}
