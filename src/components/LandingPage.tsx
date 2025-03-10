@@ -1,0 +1,382 @@
+import React from 'react';
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { FaIndustry, FaTools, FaMicrochip, FaHandshake, FaCogs, FaAtom } from 'react-icons/fa';
+
+const Container = styled.div`
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffffff 0%, #f5f8ff 100%);
+  padding-top: 64px;
+`;
+
+const HeroSection = styled.section`
+  text-align: center;
+  padding: 6rem 2rem;
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95)),
+              url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab') center/cover;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-color), #4facfe);
+  }
+`;
+
+const Title = styled(motion.h1)`
+  font-size: 3rem;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+`;
+
+const Subtitle = styled(motion.p)`
+  font-size: 1.25rem;
+  color: var(--text-medium);
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  line-height: 1.8;
+  font-weight: 500;
+`;
+
+const ButtonGroup = styled(motion.div)`
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+`;
+
+const Button = styled(Link)`
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  &.primary {
+    background: var(--primary-color);
+    color: white;
+    border: 2px solid var(--primary-color);
+
+    &:hover {
+      background: var(--primary-dark);
+      border-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+  }
+
+  &.secondary {
+    background: white;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+
+    &:hover {
+      background: var(--primary-light);
+      transform: translateY(-2px);
+    }
+  }
+`;
+
+const FeaturesSection = styled.section`
+  padding: 4rem 2rem;
+  background: white;
+`;
+
+const FeaturesGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
+const FeatureCard = styled(motion.div)`
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border-color: var(--primary-color);
+  }
+
+  h3 {
+    color: var(--text-dark);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  p {
+    color: var(--text-medium);
+    line-height: 1.6;
+    font-size: 1.1rem;
+  }
+`;
+
+const BusinessAreas = styled.section`
+  padding: 5rem 2rem;
+  background: linear-gradient(180deg, #f5f8ff 0%, #ffffff 100%);
+  position: relative;
+`;
+
+const SectionTitle = styled.h2`
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--text-dark);
+  font-weight: 700;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 2px;
+  }
+`;
+
+const CardGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
+const BusinessCard = styled(motion.div)`
+  background: white;
+  padding: 2.5rem;
+  border-radius: 15px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-lg);
+  }
+
+  h3 {
+    color: var(--text-dark);
+    margin: 1rem 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  p {
+    color: var(--text-medium);
+    line-height: 1.6;
+    font-size: 1.1rem;
+  }
+`;
+
+const IconWrapper = styled.div`
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  
+  svg {
+    filter: drop-shadow(0 2px 4px rgba(0, 51, 161, 0.2));
+  }
+`;
+
+const CoreValues = styled.section`
+  padding: 5rem 2rem;
+  background: linear-gradient(180deg, #ffffff 0%, #f5f8ff 100%);
+  position: relative;
+`;
+
+const ValueGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
+const ValueCard = styled(motion.div)`
+  text-align: center;
+  padding: 2.5rem;
+  background: white;
+  border-radius: 15px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-lg);
+  }
+
+  h3 {
+    color: var(--text-dark);
+    margin: 1rem 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  p {
+    color: var(--text-medium);
+    line-height: 1.6;
+    font-size: 1.1rem;
+  }
+
+  ${IconWrapper} {
+    margin-bottom: 1rem;
+  }
+`;
+
+const LandingPage = () => {
+  return (
+    <Container>
+      <HeroSection>
+        <Title
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          최첨단 반도체 장비 솔루션
+        </Title>
+        <Subtitle
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          고요는 최고의 기술력과 품질로 반도체 산업의 미래를 선도합니다.
+          혁신적인 솔루션과 뛰어난 서비스로 고객의 성공을 함께 만들어갑니다.
+        </Subtitle>
+        <ButtonGroup
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          <Button to="/about/greeting" className="primary">
+            회사 소개
+          </Button>
+          <Button to="/support/contact" className="secondary">
+            문의하기
+          </Button>
+        </ButtonGroup>
+      </HeroSection>
+
+      <FeaturesSection>
+        <FeaturesGrid>
+          <FeatureCard
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h3>첨단 기술력</h3>
+            <p>최신 기술과 노하우를 바탕으로 고품질 제품을 제공합니다.</p>
+          </FeatureCard>
+          <FeatureCard
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <h3>맞춤형 솔루션</h3>
+            <p>고객의 요구사항에 최적화된 맞춤형 솔루션을 제공합니다.</p>
+          </FeatureCard>
+          <FeatureCard
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <h3>신속한 서비스</h3>
+            <p>24시간 고객 지원으로 신속하고 정확한 서비스를 제공합니다.</p>
+          </FeatureCard>
+        </FeaturesGrid>
+      </FeaturesSection>
+
+      <BusinessAreas>
+        <SectionTitle>사업영역</SectionTitle>
+        <CardGrid>
+          <BusinessCard whileHover={{ y: -10 }}>
+            <IconWrapper>
+              <FaMicrochip />
+            </IconWrapper>
+            <h3>설비사업부</h3>
+            <p>최첨단 반도체 제조 장비 설계 및 제작</p>
+          </BusinessCard>
+          <BusinessCard whileHover={{ y: -10 }}>
+            <IconWrapper>
+              <FaCogs />
+            </IconWrapper>
+            <h3>금속가공사업부</h3>
+            <p>정밀 금속 가공 및 첨단 소재 처리</p>
+          </BusinessCard>
+          <BusinessCard whileHover={{ y: -10 }}>
+            <IconWrapper>
+              <FaAtom />
+            </IconWrapper>
+            <h3>정밀세정사업부</h3>
+            <p>나노급 정밀 세정 및 표면 처리</p>
+          </BusinessCard>
+          <BusinessCard whileHover={{ y: -10 }}>
+            <IconWrapper>
+              <FaMicrochip />
+            </IconWrapper>
+            <h3>파트판매사업부</h3>
+            <p>글로벌 반도체 부품 공급 네트워크</p>
+          </BusinessCard>
+        </CardGrid>
+      </BusinessAreas>
+
+      <CoreValues>
+        <SectionTitle>핵심가치</SectionTitle>
+        <ValueGrid>
+          <ValueCard
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <IconWrapper>
+              <FaMicrochip />
+            </IconWrapper>
+            <h3>기술 혁신</h3>
+            <p>최첨단 기술로 미래를 선도합니다</p>
+          </ValueCard>
+          <ValueCard
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <IconWrapper>
+              <FaCogs />
+            </IconWrapper>
+            <h3>품질 신뢰</h3>
+            <p>완벽한 품질로 신뢰를 구축합니다</p>
+          </ValueCard>
+          <ValueCard
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <IconWrapper>
+              <FaHandshake />
+            </IconWrapper>
+            <h3>고객 만족</h3>
+            <p>고객의 성공이 우리의 목표입니다</p>
+          </ValueCard>
+        </ValueGrid>
+      </CoreValues>
+    </Container>
+  );
+};
+
+export default LandingPage; 
