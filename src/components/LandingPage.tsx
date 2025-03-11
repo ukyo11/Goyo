@@ -328,14 +328,14 @@ const LandingPage = () => {
               <FaAtom />
             </IconWrapper>
             <h3>정밀세정</h3>
-            <p>나노급 정밀 세정 및 표면 처리</p>
+            <p>Repair Part, 정밀 세정, Valve 세정 </p>
           </BusinessCard>
           <BusinessCard whileHover={{ y: -10 }}>
             <IconWrapper>
               <FaMicrochip />
             </IconWrapper>
             <h3>취급 Parts</h3>
-            <p>CKD,Cobetter,ATEN,TPC,Bronkhorst,SPG,PMI,IKD</p>
+            <p>COBETTER, Bronkhorst, TPC, PMI 다수 취급</p>
           </BusinessCard>
           <BusinessCard whileHover={{ y: -10 }}>
             <IconWrapper>
