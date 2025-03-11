@@ -116,13 +116,9 @@ const Organization = () => {
             transition={{ type: "spring", stiffness: 300 }}
           >
             <FaUsers />
-            <h3>경영지원본부</h3>
-            <p>기업 운영 및 관리</p>
-            <SubDepartments>
-              <SubDepartment>인사팀</SubDepartment>
-              <SubDepartment>재무팀</SubDepartment>
-              <SubDepartment>총무팀</SubDepartment>
-            </SubDepartments>
+            <h3>품질</h3>
+            <p>품질보증 및 관리</p>
+            
           </Department>
         </Level>
 
@@ -135,9 +131,12 @@ const Organization = () => {
             <h3>설비사업부</h3>
             <p>설비 설계 및 제작</p>
             <SubDepartments>
-              <SubDepartment>설계팀</SubDepartment>
-              <SubDepartment>제작팀</SubDepartment>
-              <SubDepartment>기술연구소</SubDepartment>
+              <SubDepartment>Machine design</SubDepartment>
+              <SubDepartment>Metal machining</SubDepartment>
+              <SubDepartment>Electrical device</SubDepartment>
+              <SubDepartment>PLC , S/W</SubDepartment>
+              <SubDepartment>Assembly</SubDepartment>
+              <SubDepartment>Set-up</SubDepartment>
             </SubDepartments>
           </Department>
 
@@ -149,28 +148,34 @@ const Organization = () => {
             <h3>세정사업부</h3>
             <p>정밀 부품 세정</p>
             <SubDepartments>
-              <SubDepartment>세정기술팀</SubDepartment>
-              <SubDepartment>품질관리팀</SubDepartment>
-              <SubDepartment>공정개발팀</SubDepartment>
+              <SubDepartment>Repair parts</SubDepartment>
+              <SubDepartment>Process valve</SubDepartment>
+              <SubDepartment>Metal product</SubDepartment>
+              <SubDepartment>Ceramic</SubDepartment>
+              <SubDepartment>etc.</SubDepartment>
             </SubDepartments>
           </Department>
-        </Level>
 
-        <Level>
           <Department
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <FaClipboardCheck />
-            <h3>품질관리본부</h3>
-            <p>품질보증 및 관리</p>
+            <FaIndustry />
+            <h3>Parts 사업부</h3>
+            <p>부품</p>
             <SubDepartments>
-              <SubDepartment>품질보증팀</SubDepartment>
-              <SubDepartment>품질관리팀</SubDepartment>
-              <SubDepartment>공정관리팀</SubDepartment>
+              <SubDepartment>CKD</SubDepartment>
+              <SubDepartment>COBETTER</SubDepartment>
+              <SubDepartment>ATEN</SubDepartment>
+              <SubDepartment>TPC</SubDepartment>
+              <SubDepartment>Bronkhorst</SubDepartment>
+              <SubDepartment>SPG</SubDepartment>
+              <SubDepartment>PMI</SubDepartment>
+              <SubDepartment>IKD</SubDepartment>
             </SubDepartments>
           </Department>
         </Level>
+
       </OrgChart>
     </OrganizationContainer>
   );

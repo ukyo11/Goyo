@@ -69,7 +69,7 @@ const QuestionText = styled.div`
 
 const IconWrapper = styled.div<{ isOpen: boolean }>`
   color: ${colors.primary.main};
-  transform: rotate(\${props => (props.isOpen ? '180deg' : '0')});
+  transform: rotate(${props => (props.isOpen ? '180deg' : '0')});
   transition: transform 0.3s ease;
 `;
 

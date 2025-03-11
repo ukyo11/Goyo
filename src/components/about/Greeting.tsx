@@ -115,7 +115,7 @@ const GreetingComponent = () => {
             </Message>
             <Signature>
               <div className="position">대표이사</div>
-              <div className="name">홍 길 동</div>
+              <div className="name">이 철 봉</div>
             </Signature>
           </TextContent>
         </ContentWrapper>

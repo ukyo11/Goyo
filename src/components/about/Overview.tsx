@@ -97,7 +97,7 @@ const Overview = () => {
               <tbody>
                 <Tr>
                   <Th>회사명</Th>
-                  <Td>고요엔지니어링</Td>
+                  <Td>㈜고요 코퍼레이션</Td>
                 </Tr>
                 <Tr>
                   <Th>설립일</Th>
@@ -105,7 +105,7 @@ const Overview = () => {
                 </Tr>
                 <Tr>
                   <Th>대표이사</Th>
-                  <Td>홍길동</Td>
+                  <Td>이철봉</Td>
                 </Tr>
                 <Tr>
                   <Th>사업분야</Th>
@@ -125,15 +125,15 @@ const Overview = () => {
               <tbody>
                 <Tr>
                   <Th>본사</Th>
-                  <Td>경기도 화성시 00구 00로 123</Td>
+                  <Td>경기도 용인시 수지구 포은대로 59번길 37, B410(상현동, 시그니처 광교)</Td>
                 </Tr>
                 <Tr>
                   <Th>제1공장</Th>
-                  <Td>경기도 화성시 00구 00로 456</Td>
+                  <Td>경기도 화성시 팔탄면 향남읍 터넉골로</Td>
                 </Tr>
                 <Tr>
                   <Th>제2공장</Th>
-                  <Td>경기도 화성시 00구 00로 789</Td>
+                  <Td>경기도 안성시 서운면 삼사로</Td>
                 </Tr>
               </tbody>
             </Table>
@@ -144,16 +144,16 @@ const Overview = () => {
             <Table>
               <tbody>
                 <Tr>
-                  <Th>전화</Th>
-                  <Td>031-000-0000</Td>
+                  <Th>TEL</Th>
+                  <Td>031-304-2099</Td>
                 </Tr>
                 <Tr>
-                  <Th>팩스</Th>
-                  <Td>031-000-0001</Td>
+                  <Th>HP</Th>
+                  <Td>010-9465-2099</Td>
                 </Tr>
                 <Tr>
-                  <Th>이메일</Th>
-                  <Td>info@goyo.com</Td>
+                  <Th>E-MAIL</Th>
+                  <Td>cblee@higoyo.co.kr</Td>
                 </Tr>
               </tbody>
             </Table>

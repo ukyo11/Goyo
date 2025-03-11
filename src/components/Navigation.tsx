@@ -78,9 +78,10 @@ const NavLinks = styled.div<{ isOpen: boolean }>`
     gap: 0;
     background: #ffffff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 0;
+    padding: 1rem 0;
     overflow-y: auto;
     z-index: 1000;
+    max-height: calc(100vh - 64px);
   }
 `;
 
@@ -204,6 +205,7 @@ const DropdownLink = styled(Link)<{ active?: boolean }>`
   position: relative;
   font-weight: ${props => props.active ? '600' : '400'};
   letter-spacing: -0.2px;
+  
 
   &:hover {
     background: #f8f0ff;
@@ -239,7 +241,7 @@ const DropdownLink = styled(Link)<{ active?: boolean }>`
   }
 
   @media (max-width: 768px) {
-    padding: 0.8rem 2.5rem;
+    padding: 0.4rem 2.5rem;
     background: transparent;
     font-size: 0.9rem;
 
@@ -329,7 +331,7 @@ const Navigation = () => {
     <Nav>
       <NavContainer>
         <Logo to="/">
-          <img src="./images/logo.png" alt="GOYO Logo" />
+          <img src="images/logo.png" alt="GOYO Logo" />
         </Logo>
         <MenuButton onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <FaTimes /> : <FaBars />}

@@ -5,9 +5,13 @@ import { FaUserTie, FaUsers, FaCogs, FaChartLine, FaClipboardCheck } from 'react
 import { colors } from '../../styles/colors';
 
 const Container = styled.div`
-  padding: 2rem;
+  padding: 1rem;
   max-width: 1200px;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+  }
 `;
 
 const Title = styled.h2`
@@ -16,6 +20,11 @@ const Title = styled.h2`
   font-weight: 800;
   text-align: center;
   margin-bottom: 3rem;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 const ChartContainer = styled.div`
@@ -23,6 +32,10 @@ const ChartContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+
+  @media (max-width: 768px) {
+    gap: 1.5rem;
+  }
 `;
 
 const ExecutiveSection = styled.div`
@@ -30,13 +43,23 @@ const ExecutiveSection = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const DepartmentGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
   width: 100%;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 100%;
+  }
 `;
 
 const Card = styled(motion.div)`
@@ -51,12 +74,20 @@ const Card = styled(motion.div)`
     border-color: ${colors.primary.main};
     box-shadow: 0 8px 24px ${colors.shadow.medium};
   }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
 `;
 
 const ExecutiveCard = styled(Card)`
   background: ${colors.primary.main};
   color: white;
   max-width: 300px;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
 `;
 
 const IconWrapper = styled.div`
@@ -66,6 +97,11 @@ const IconWrapper = styled.div`
 
   ${ExecutiveCard} & {
     color: white;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 1rem;
   }
 `;
 
@@ -78,6 +114,11 @@ const Position = styled.h3`
   ${ExecutiveCard} & {
     color: white;
   }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
 `;
 
 const Name = styled.div`
@@ -89,12 +130,20 @@ const Name = styled.div`
   ${ExecutiveCard} & {
     color: white;
   }
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const TeamList = styled.ul`
   list-style: none;
   padding: 0;
   margin-top: 1.5rem;
+
+  @media (max-width: 768px) {
+    margin-top: 1rem;
+  }
 `;
 
 const TeamItem = styled.li`
@@ -124,6 +173,11 @@ const TeamItem = styled.li`
     &::before {
       color: white;
     }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    padding: 0.6rem 0;
   }
 `;
 
