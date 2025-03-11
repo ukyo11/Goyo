@@ -313,29 +313,36 @@ const LandingPage = () => {
             <IconWrapper>
               <FaMicrochip />
             </IconWrapper>
-            <h3>설비사업부</h3>
-            <p>최첨단 반도체 제조 장비 설계 및 제작</p>
+            <h3>가공 / 조립</h3>
+            <p>금속류, 판금 , Frame 가공 및 조립</p>
           </BusinessCard>
           <BusinessCard whileHover={{ y: -10 }}>
             <IconWrapper>
               <FaCogs />
             </IconWrapper>
-            <h3>금속가공사업부</h3>
+            <h3>기구/전장 조립,Set-up</h3>
             <p>정밀 금속 가공 및 첨단 소재 처리</p>
           </BusinessCard>
           <BusinessCard whileHover={{ y: -10 }}>
             <IconWrapper>
               <FaAtom />
             </IconWrapper>
-            <h3>정밀세정사업부</h3>
+            <h3>정밀세정</h3>
             <p>나노급 정밀 세정 및 표면 처리</p>
           </BusinessCard>
           <BusinessCard whileHover={{ y: -10 }}>
             <IconWrapper>
               <FaMicrochip />
             </IconWrapper>
-            <h3>파트판매사업부</h3>
-            <p>글로벌 반도체 부품 공급 네트워크</p>
+            <h3>취급 Parts</h3>
+            <p>CKD,Cobetter,ATEN,TPC,Bronkhorst,SPG,PMI,IKD</p>
+          </BusinessCard>
+          <BusinessCard whileHover={{ y: -10 }}>
+            <IconWrapper>
+              <FaMicrochip />
+            </IconWrapper>
+            <h3>구매대행 서비스</h3>
+            <p>글로벌 소싱/해외 사업장 구매대행 </p>
           </BusinessCard>
         </CardGrid>
       </BusinessAreas>
