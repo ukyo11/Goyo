@@ -1,10 +1,10 @@
 export const colors = {
   // Primary Colors
   primary: {
-    main: '#003584',
-    light: '#0042a9',
-    dark: '#002a6b',
-    lighter: '#ccd4e6',
+    main: '#915cb3',
+    light: '#a76ecc',
+    dark: '#7a4e98',
+    lighter: '#e8dff2',
   },
   
   // Text Colors
@@ -18,16 +18,16 @@ export const colors = {
   // Background Colors
   background: {
     main: '#ffffff',
-    light: '#f8f9ff',
+    light: '#f8f0ff',
     card: '#ffffff',
-    highlight: '#ccd4e6',
+    highlight: '#e8dff2',
   },
   
   // Border Colors
   border: {
-    main: '#ccd4e6',
-    dark: '#003584',
-    light: '#e6ecff',
+    main: '#e8dff2',
+    dark: '#915cb3',
+    light: '#f8f0ff',
   },
   
   // Shadow Colors
@@ -41,8 +41,8 @@ export const colors = {
   // Gradient Colors
   gradient: {
     primary: {
-      start: 'rgba(0, 51, 161, 0.95)',
-      end: 'rgba(0, 40, 130, 0.98)',
+      start: 'rgba(145, 92, 179, 0.95)',
+      end: 'rgba(122, 78, 152, 0.98)',
     },
   },
 }; 

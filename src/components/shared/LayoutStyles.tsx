@@ -12,8 +12,8 @@ interface PageHeaderProps {
 }
 
 export const PageHeader = styled.div<PageHeaderProps>`
-  background: linear-gradient(rgba(0, 51, 161, 0.95), rgba(0, 40, 130, 0.98)),
-              url('${props => props.bgImage || ''}') center/cover;
+  background: linear-gradient(rgba(145, 92, 179, 0.95), rgba(122, 78, 152, 0.98)),
+              url('${props => props.bgImage || 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80'}') center/cover;
   padding: 6rem 2rem 4rem;
   text-align: center;
   position: relative;
@@ -27,7 +27,7 @@ export const PageHeader = styled.div<PageHeaderProps>`
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(to right, #003584, #0042a9);
+    background: linear-gradient(to right, #915cb3, #a76ecc);
   }
 `;
 
@@ -68,7 +68,7 @@ export const ContentWrapper = styled.div`
     transform: translateX(-50%);
     width: 120px;
     height: 4px;
-    background: linear-gradient(to right, #003584, #0042a9);
+    background: linear-gradient(to right, #915cb3, #a76ecc);
     border-radius: 2px;
   }
 `;

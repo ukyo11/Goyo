@@ -10,12 +10,12 @@ const Container = styled.div`
 `;
 
 const PageHeader = styled.div`
-  background: linear-gradient(${colors.gradient.primary.start}, ${colors.gradient.primary.end}),
-              url('/images/products-header.jpg') center/cover;
+  background: linear-gradient(rgba(145, 92, 179, 0.95), rgba(122, 78, 152, 0.98)),
+              url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80') center/cover;
   padding: 6rem 2rem 4rem;
   text-align: center;
   position: relative;
-  box-shadow: 0 4px 12px ${colors.shadow.dark};
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 
   &::after {
     content: '';
@@ -24,7 +24,7 @@ const PageHeader = styled.div`
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(to right, ${colors.primary.main}, ${colors.primary.light});
+    background: linear-gradient(to right, #915cb3, #a76ecc);
   }
 `;
 

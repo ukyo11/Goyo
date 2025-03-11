@@ -10,8 +10,8 @@ const AboutContainer = styled.div`
 `;
 
 const PageHeader = styled.div`
-  background: linear-gradient(rgba(0, 66, 169, 0.9), rgba(0, 53, 132, 0.95)),
-              url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab') center/cover;
+  background: linear-gradient(rgba(145, 92, 179, 0.9), rgba(122, 78, 152, 0.95)),
+              url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80') center/cover;
   padding: 6rem 2rem 4rem;
   text-align: center;
   position: relative;
@@ -24,7 +24,7 @@ const PageHeader = styled.div`
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(to right, #0042a9, #4facfe);
+    background: linear-gradient(to right, #915cb3, #a76ecc);
   }
 `;
 
@@ -44,7 +44,7 @@ const Subtitle = styled(motion.p)`
   line-height: 1.6;
 `;
 
-const ContentWrapper = styled.div`
+export const ContentWrapper = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 3rem 2rem;
@@ -58,7 +58,7 @@ const ContentWrapper = styled.div`
     transform: translateX(-50%);
     width: 100px;
     height: 4px;
-    background: linear-gradient(to right, #0042a9, #4facfe);
+    background: linear-gradient(to right, #915cb3, #a76ecc);
     border-radius: 2px;
   }
 `;

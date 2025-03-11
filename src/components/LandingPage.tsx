@@ -6,7 +6,7 @@ import { FaIndustry, FaTools, FaMicrochip, FaHandshake, FaCogs, FaAtom } from 'r
 
 const Container = styled.div`
   min-height: 100vh;
-  background: linear-gradient(135deg, #ffffff 0%, #f5f8ff 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #f8f0ff 100%);
   padding-top: 64px;
 `;
 
@@ -25,7 +25,7 @@ const HeroSection = styled.section`
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(to right, var(--primary-color), #4facfe);
+    background: linear-gradient(to right, #915cb3, #a76ecc);
   }
 `;
 
@@ -61,24 +61,24 @@ const Button = styled(Link)`
   transition: all 0.3s ease;
 
   &.primary {
-    background: var(--primary-color);
+    background: #915cb3;
     color: white;
-    border: 2px solid var(--primary-color);
+    border: 2px solid #915cb3;
 
     &:hover {
-      background: var(--primary-dark);
-      border-color: var(--primary-dark);
+      background: #7a4e98;
+      border-color: #7a4e98;
       transform: translateY(-2px);
     }
   }
 
   &.secondary {
     background: white;
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
+    color: #915cb3;
+    border: 2px solid #915cb3;
 
     &:hover {
-      background: var(--primary-light);
+      background: #f8f0ff;
       transform: translateY(-2px);
     }
   }
@@ -127,7 +127,7 @@ const FeatureCard = styled(motion.div)`
 
 const BusinessAreas = styled.section`
   padding: 5rem 2rem;
-  background: linear-gradient(180deg, #f5f8ff 0%, #ffffff 100%);
+  background: linear-gradient(180deg, #f8f0ff 0%, #ffffff 100%);
   position: relative;
 `;
 
@@ -190,17 +190,17 @@ const BusinessCard = styled(motion.div)`
 
 const IconWrapper = styled.div`
   font-size: 2.5rem;
-  color: var(--primary-color);
+  color: #915cb3;
   margin-bottom: 1.5rem;
   
   svg {
-    filter: drop-shadow(0 2px 4px rgba(0, 51, 161, 0.2));
+    filter: drop-shadow(0 2px 4px rgba(145, 92, 179, 0.2));
   }
 `;
 
 const CoreValues = styled.section`
   padding: 5rem 2rem;
-  background: linear-gradient(180deg, #ffffff 0%, #f5f8ff 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #f8f0ff 100%);
   position: relative;
 `;
 

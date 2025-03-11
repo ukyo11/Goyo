@@ -12,6 +12,10 @@ const Nav = styled.nav`
   background: rgba(255, 255, 255, 0.98);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+
+  @media (max-width: 768px) {
+    background: #ffffff;
+  }
 `;
 
 const NavContainer = styled.div`
@@ -25,7 +29,7 @@ const NavContainer = styled.div`
 `;
 
 const Logo = styled(Link)`
-  color: #0042a9;
+  color: #915cb3;
   font-size: 1.5rem;
   font-weight: bold;
   text-decoration: none;
@@ -33,8 +37,13 @@ const Logo = styled(Link)`
   align-items: center;
   gap: 0.5rem;
 
+  img {
+    height: 40px;
+    width: auto;
+  }
+
   &:hover {
-    color: #003584;
+    color: #7a4e98;
   }
 `;
 
@@ -42,14 +51,10 @@ const MenuButton = styled.button`
   display: none;
   background: none;
   border: none;
-  color: #0042a9;
+  color: #915cb3;
   font-size: 1.5rem;
   cursor: pointer;
   padding: 0.5rem;
-
-  &:hover {
-    color: #003584;
-  }
 
   @media (max-width: 768px) {
     display: block;
@@ -64,14 +69,18 @@ const NavLinks = styled.div<{ isOpen: boolean }>`
 
   @media (max-width: 768px) {
     display: ${props => props.isOpen ? 'flex' : 'none'};
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 64px;
     left: 0;
     right: 0;
+    bottom: 0;
     flex-direction: column;
     gap: 0;
     background: #ffffff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    overflow-y: auto;
+    z-index: 1000;
   }
 `;
 
@@ -84,13 +93,19 @@ const NavItem = styled.div`
     animation: fadeIn 0.2s ease;
   }
 
-  &:hover {
-    background: rgba(1, 81, 198, 0.03);
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0;
+    border-bottom: 1px solid #e8e8e8;
+
+    &:hover > div {
+      animation: none;
+    }
   }
 `;
 
 const NavButton = styled.button<{ active?: boolean }>`
-  color: ${props => props.active ? '#0042a9' : '#222222'};
+  color: ${props => props.active ? '#915cb3' : '#222222'};
   text-decoration: none;
   padding: 1rem;
   display: block;
@@ -102,32 +117,36 @@ const NavButton = styled.button<{ active?: boolean }>`
   font-weight: ${props => props.active ? '600' : '500'};
   position: relative;
   letter-spacing: -0.3px;
+  width: 100%;
+  text-align: left;
 
   &:hover {
-    color: #003584;
+    color: #7a4e98;
     font-weight: 600;
-    background-color: rgba(0, 65, 169, 0.05);
+    background-color: rgba(145, 92, 179, 0.05);
   }
 
-  &::after {
-    content: '';
-    display: block;
-    width: ${props => props.active ? '100%' : '0'};
-    height: 3px;
-    background: #0042a9;
-    transition: width 0.2s ease;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+  @media (min-width: 769px) {
+    &::after {
+      content: '';
+      display: block;
+      width: ${props => props.active ? '100%' : '0'};
+      height: 3px;
+      background: #915cb3;
+      transition: width 0.2s ease;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
   }
 
-  &:hover::after {
-    width: 100%;
-  }
-
-  text-shadow: ${props => props.active ? '0 0 0.5px #0151c6' : 'none'};
+  text-shadow: ${props => props.active ? '0 0 0.5px #915cb3' : 'none'};
   &:hover {
-    text-shadow: 0 0 0.5px #0151c6;
+    text-shadow: 0 0 0.5px #915cb3;
   }
 `;
 
@@ -158,6 +177,7 @@ const Dropdown = styled.div`
   }
 
   @media (max-width: 768px) {
+    display: block;
     position: static;
     transform: none;
     box-shadow: none;
@@ -165,6 +185,8 @@ const Dropdown = styled.div`
     background: #f8f9fa;
     border: none;
     min-width: 100%;
+    padding: 0;
+    margin: 0;
 
     &::before {
       display: none;
@@ -173,7 +195,7 @@ const Dropdown = styled.div`
 `;
 
 const DropdownLink = styled(Link)<{ active?: boolean }>`
-  color: ${props => props.active ? '#0042a9' : '#222222'};
+  color: ${props => props.active ? '#915cb3' : '#222222'};
   text-decoration: none;
   padding: 0.9rem 1.5rem;
   display: block;
@@ -184,43 +206,51 @@ const DropdownLink = styled(Link)<{ active?: boolean }>`
   letter-spacing: -0.2px;
 
   &:hover {
-    background: #edf5ff;
-    color: #003584;
+    background: #f8f0ff;
+    color: #7a4e98;
     font-weight: 500;
   }
 
-  &::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 3px;
-    height: 0;
-    background: #0042a9;
-    transition: height 0.2s ease;
-  }
-
-  &:hover::before {
-    height: 70%;
-  }
-
-  ${props => props.active && `
-    background: #edf5ff;
-    font-weight: 600;
-    
+  @media (min-width: 769px) {
     &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 0;
+      background: #915cb3;
+      transition: height 0.2s ease;
+    }
+
+    &:hover::before {
       height: 70%;
     }
-  `}
+
+    ${props => props.active && `
+      background: #f8f0ff;
+      font-weight: 600;
+      
+      &::before {
+        height: 70%;
+      }
+    `}
+  }
 
   @media (max-width: 768px) {
-    padding: 1rem 2rem;
-    border-bottom: 1px solid #e8e8e8;
+    padding: 0.8rem 2.5rem;
+    background: transparent;
+    font-size: 0.9rem;
 
-    &:last-child {
-      border-bottom: none;
+    &:hover {
+      background: #f8f0ff;
     }
+
+    ${props => props.active && `
+      background: #f8f0ff;
+      font-weight: 600;
+    `}
   }
 `;
 
@@ -287,13 +317,20 @@ const Navigation = () => {
   const handleMainMenuClick = (item: typeof menuItems[0]) => {
     if (item.submenu && item.submenu.length > 0) {
       navigate(item.submenu[0].path);
+      setIsOpen(false);
     }
+  };
+
+  const handleSubMenuClick = () => {
+    setIsOpen(false);
   };
 
   return (
     <Nav>
       <NavContainer>
-        <Logo to="/">GOYO</Logo>
+        <Logo to="/">
+          <img src="/images/logo.png" alt="GOYO Logo" />
+        </Logo>
         <MenuButton onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <FaTimes /> : <FaBars />}
         </MenuButton>
@@ -312,6 +349,7 @@ const Navigation = () => {
                     key={subItem.path}
                     to={subItem.path}
                     active={isExactActive(subItem.path)}
+                    onClick={handleSubMenuClick}
                   >
                     {subItem.title}
                   </DropdownLink>
