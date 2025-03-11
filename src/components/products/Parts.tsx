@@ -5,7 +5,7 @@ import { FaMicrochip, FaCogs, FaIndustry, FaTools, FaRobot, FaMemory } from 'rea
 import { colors } from '../../styles/colors';
 
 const Container = styled.div`
-  padding: 2rem;
+  padding: .5rem;
 `;
 
 const Section = styled.section`

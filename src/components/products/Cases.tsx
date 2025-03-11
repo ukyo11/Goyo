@@ -2,133 +2,140 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaIndustry, FaMicrochip, FaSearch, FaChartLine } from 'react-icons/fa';
+import { colors } from '../../styles/colors';
 
-const Container = styled(motion.div)`
-  display: grid;
-  gap: 2rem;
+const Container = styled.div`
+  padding: .5rem;
 `;
 
 const Section = styled.section`
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 15px;
-  padding: 2rem;
-  border: 1px solid rgba(79, 172, 254, 0.1);
+  margin-bottom: 4rem;
 `;
 
-const Title = styled.h2`
+const SectionTitle = styled.h2`
+  color: ${colors.text.primary};
   font-size: 2rem;
-  color: #4facfe;
-  margin-bottom: 2rem;
+  font-weight: 700;
   text-align: center;
+  margin-bottom: 2rem;
 `;
 
 const Description = styled.p`
-  color: #e0e7ff;
-  line-height: 1.8;
+  color: ${colors.text.primary};
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
   text-align: center;
-  margin-bottom: 3rem;
+  max-width: 800px;
+  margin: 0 auto 2rem;
 `;
 
-const CaseGrid = styled.div`
+const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
+  margin: 2rem 0;
 `;
 
-const CaseCard = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 15px;
-  overflow: hidden;
-`;
+const Card = styled(motion.div)`
+  background: ${colors.background.card};
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px ${colors.shadow.light};
+  border: 2px solid ${colors.border.main};
 
-const CaseImage = styled.div`
-  width: 100%;
-  aspect-ratio: 16/9;
-  background: rgba(255, 255, 255, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  svg {
-    font-size: 3rem;
-    color: #4facfe;
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px ${colors.shadow.medium};
+    border-color: ${colors.primary.main};
   }
 `;
 
-const CaseContent = styled.div`
-  padding: 1.5rem;
-
-  h3 {
-    color: #7dd3fc;
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-  }
-
-  p {
-    color: #e0e7ff;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-  }
+const IconWrapper = styled.div`
+  font-size: 2.5rem;
+  color: ${colors.primary.main};
+  margin-bottom: 1.5rem;
+  text-align: center;
 `;
 
-const SpecList = styled.ul`
+const CardTitle = styled.h3`
+  color: ${colors.text.primary};
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+`;
+
+const FeatureList = styled.ul`
   list-style: none;
   padding: 0;
-  margin: 0;
+`;
 
-  li {
-    color: #e0e7ff;
-    margin: 0.5rem 0;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.9rem;
+const FeatureItem = styled.li`
+  color: ${colors.text.primary};
+  font-size: 1.1rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid ${colors.border.main};
+  display: flex;
+  align-items: center;
 
-    &::before {
-      content: '•';
-      color: #4facfe;
-    }
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &::before {
+    content: "•";
+    color: ${colors.primary.main};
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin-right: 0.8rem;
   }
 `;
 
-const StatGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  margin-top: 3rem;
+const StatsSection = styled.div`
+  margin-top: 4rem;
 `;
 
-const StatCard = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.05);
-  padding: 1.5rem;
-  border-radius: 10px;
-  border: 1px solid rgba(79, 172, 254, 0.1);
+const StatsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+`;
+
+const StatsCard = styled(motion.div)`
+  background: ${colors.background.card};
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px ${colors.shadow.light};
+  border: 2px solid ${colors.border.main};
   text-align: center;
 
-  svg {
-    font-size: 2rem;
-    color: #4facfe;
-    margin-bottom: 1rem;
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px ${colors.shadow.medium};
+    border-color: ${colors.primary.main};
   }
+`;
 
-  h4 {
-    color: #7dd3fc;
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-  }
+const StatsTitle = styled.h4`
+  color: ${colors.text.primary};
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 1rem 0;
+`;
 
-  p {
-    color: #e0e7ff;
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-  }
+const StatsValue = styled.p`
+  color: ${colors.primary.main};
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 1rem 0;
+`;
 
-  span {
-    color: #e0e7ff;
-    font-size: 0.9rem;
-  }
+const StatsDescription = styled.span`
+  color: ${colors.text.primary};
+  font-size: 1.1rem;
+  display: block;
 `;
 
 const Cases = () => {
@@ -166,65 +173,64 @@ const Cases = () => {
   ];
 
   return (
-    <Container
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-    >
+    <Container>
       <Section>
-        <Title>설비 제작 사례</Title>
+        <SectionTitle>설비 제작 사례</SectionTitle>
         <Description>
           고객의 요구사항에 맞춘 최적의 솔루션을 제공합니다.
           다양한 제작 경험을 바탕으로 신뢰성 높은 장비를 제작합니다.
         </Description>
 
-        <CaseGrid>
+        <Grid>
           {cases.map((item, index) => (
-            <CaseCard
+            <Card
               key={index}
               whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              transition={{ duration: 0.2 }}
             >
-              <CaseImage>
-                <FaIndustry />
-              </CaseImage>
-              <CaseContent>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-                <SpecList>
-                  {item.specs.map((spec, specIndex) => (
-                    <li key={specIndex}>{spec}</li>
-                  ))}
-                </SpecList>
-              </CaseContent>
-            </CaseCard>
+              <IconWrapper>
+                <FaMicrochip />
+              </IconWrapper>
+              <CardTitle>{item.title}</CardTitle>
+              <FeatureList>
+                {item.specs.map((spec, specIndex) => (
+                  <FeatureItem key={specIndex}>{spec}</FeatureItem>
+                ))}
+              </FeatureList>
+            </Card>
           ))}
-        </CaseGrid>
+        </Grid>
       </Section>
 
-      <Section>
-        <Title>제작 실적</Title>
-        <StatGrid>
-          <StatCard whileHover={{ scale: 1.05 }}>
-            <FaMicrochip />
-            <h4>누적 제작 건수</h4>
-            <p>500+</p>
-            <span>설비</span>
-          </StatCard>
-          <StatCard whileHover={{ scale: 1.05 }}>
-            <FaSearch />
-            <h4>품질 합격률</h4>
-            <p>99.9%</p>
-            <span>양산 테스트 기준</span>
-          </StatCard>
-          <StatCard whileHover={{ scale: 1.05 }}>
-            <FaChartLine />
-            <h4>생산성 향상</h4>
-            <p>30%</p>
-            <span>평균 개선율</span>
-          </StatCard>
-        </StatGrid>
-      </Section>
+      <StatsSection>
+        <SectionTitle>제작 실적</SectionTitle>
+        <StatsGrid>
+          <StatsCard whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+            <IconWrapper>
+              <FaMicrochip />
+            </IconWrapper>
+            <StatsTitle>누적 제작 건수</StatsTitle>
+            <StatsValue>500+</StatsValue>
+            <StatsDescription>설비</StatsDescription>
+          </StatsCard>
+          <StatsCard whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+            <IconWrapper>
+              <FaSearch />
+            </IconWrapper>
+            <StatsTitle>품질 합격률</StatsTitle>
+            <StatsValue>99.9%</StatsValue>
+            <StatsDescription>양산 테스트 기준</StatsDescription>
+          </StatsCard>
+          <StatsCard whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+            <IconWrapper>
+              <FaChartLine />
+            </IconWrapper>
+            <StatsTitle>생산성 향상</StatsTitle>
+            <StatsValue>30%</StatsValue>
+            <StatsDescription>평균 개선율</StatsDescription>
+          </StatsCard>
+        </StatsGrid>
+      </StatsSection>
     </Container>
   );
 };

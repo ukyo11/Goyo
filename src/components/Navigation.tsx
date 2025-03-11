@@ -329,7 +329,7 @@ const Navigation = () => {
     <Nav>
       <NavContainer>
         <Logo to="/">
-          <img src="/images/logo.png" alt="GOYO Logo" />
+          <img src="./images/logo.png" alt="GOYO Logo" />
         </Logo>
         <MenuButton onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <FaTimes /> : <FaBars />}

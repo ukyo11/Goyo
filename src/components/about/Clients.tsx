@@ -5,7 +5,7 @@ import { FaBuilding, FaIndustry, FaMicrochip, FaCar } from 'react-icons/fa';
 import { colors } from '../../styles/colors';
 
 const ClientsContainer = styled.div`
-  padding: 2rem;
+  padding: .5rem;
   max-width: 1200px;
   margin: 0 auto;
 `;

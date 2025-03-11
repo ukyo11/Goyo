@@ -5,7 +5,7 @@ import { FaCogs, FaIndustry, FaTools, FaChartLine } from 'react-icons/fa';
 import { colors } from '../../styles/colors';
 
 const Container = styled.div`
-  padding: 2rem;
+  padding: .5rem;
 `;
 
 const Section = styled.section`

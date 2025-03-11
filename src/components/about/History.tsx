@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { colors } from '../../styles/colors';
 
 const Container = styled.div`
-  padding: 2rem;
+  padding: 0.5rem;
   max-width: 1200px;
   margin: 0 auto;
 `;

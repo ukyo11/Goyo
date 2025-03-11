@@ -2,17 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaUserTie, FaCogs, FaIndustry, FaClipboardCheck, FaUsers } from 'react-icons/fa';
+import { colors } from '../../styles/colors';
 
 const OrganizationContainer = styled(motion.div)`
   background: rgba(255, 255, 255, 0.03);
   border-radius: 15px;
-  padding: 2rem;
+  padding: .5rem;
   border: 1px solid rgba(79, 172, 254, 0.1);
 `;
 
 const Title = styled.h2`
   font-size: 2rem;
-  color: #4facfe;
+  color: ${colors.primary.main};
   margin-bottom: 2rem;
   text-align: center;
 `;
@@ -45,10 +46,10 @@ const Level = styled.div`
 `;
 
 const Department = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.5);
   padding: 1.5rem;
   border-radius: 10px;
-  border: 1px solid rgba(79, 172, 254, 0.1);
+  border: 1px solid rgba(71, 72, 73, 0.5);
   text-align: center;
   margin: 0 1rem;
   flex: 1;
@@ -56,12 +57,12 @@ const Department = styled(motion.div)`
 
   svg {
     font-size: 2rem;
-    color: #4facfe;
+    color: ${colors.primary.main};
     margin-bottom: 1rem;
   }
 
   h3 {
-    color: #7dd3fc;
+    color: ${colors.primary.dark};
     margin-bottom: 1rem;
     font-size: 1.2rem;
   }
@@ -84,8 +85,8 @@ const SubDepartment = styled.div`
   background: rgba(255, 255, 255, 0.02);
   padding: 0.8rem;
   border-radius: 8px;
-  border: 1px solid rgba(79, 172, 254, 0.05);
-  color: #7dd3fc;
+  border: 1px solid rgba(29, 29, 29, 0.5);
+  color: ${colors.primary.light};
   font-size: 0.9rem;
 `;
 

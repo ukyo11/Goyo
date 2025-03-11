@@ -5,9 +5,9 @@
 }
 
 :root {
-  --primary-color: #0033a1;
-  --primary-dark: #002677;
-  --primary-light: #e6f0ff;
+  --primary-color: #915cb3;
+  --primary-dark: #7a4e98;
+  --primary-light: #a76ecc;
   --text-dark: #000000;
   --text-medium: #1a1a1a;
   --text-light: #333333;
@@ -92,7 +92,7 @@ button {
 }
 
 button:hover {
-  background: var(--primary-dark);
+  
   transform: translateY(-1px);
 }
 

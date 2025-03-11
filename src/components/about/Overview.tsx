@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaBuilding, FaPhone, FaEnvelope, FaGlobe } from 'react-icons/fa';
+import { colors } from '../../styles/colors';
 
 const OverviewContainer = styled(motion.div)`
   display: grid;
@@ -17,7 +18,7 @@ const Section = styled.section`
 
 const Title = styled.h2`
   font-size: 2rem;
-  color: #4facfe;
+  color: ${colors.text.primary};;
   margin-bottom: 2rem;
   text-align: center;
 `;
@@ -35,7 +36,7 @@ const InfoCard = styled.div`
   border: 1px solid rgba(79, 172, 254, 0.1);
 
   h3 {
-    color: #7dd3fc;
+    color: ${colors.primary.main};
     margin-bottom: 1rem;
     font-size: 1.2rem;
     display: flex;
@@ -43,7 +44,7 @@ const InfoCard = styled.div`
     gap: 0.5rem;
 
     svg {
-      color: #4facfe;
+      color: ${colors.primary.main};
     }
   }
 
@@ -71,7 +72,7 @@ const Tr = styled.tr`
 const Th = styled.th`
   text-align: left;
   padding: 1rem;
-  color: #7dd3fc;
+  color: ${colors.primary.main};
   width: 30%;
   background: rgba(255, 255, 255, 0.02);
 `;
