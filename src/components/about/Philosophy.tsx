@@ -1,134 +1,151 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaLightbulb, FaUsers, FaChartLine } from 'react-icons/fa';
+import { FaLightbulb, FaHandshake, FaUsers, FaGlobe } from 'react-icons/fa';
+import { colors } from '../../styles/colors';
 
-const PhilosophyContainer = styled(motion.div)`
-  display: grid;
-  gap: 3rem;
+const Container = styled.div`
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 `;
 
 const Section = styled.section`
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 15px;
-  padding: 2rem;
-  border: 1px solid rgba(79, 172, 254, 0.1);
+  margin-bottom: 4rem;
 `;
 
-const SectionTitle = styled.h2`
-  font-size: 2rem;
-  color: #4facfe;
-  margin-bottom: 2rem;
+const Title = styled.h2`
+  color: ${colors.text.primary};
+  font-size: 2.5rem;
+  font-weight: 800;
   text-align: center;
+  margin-bottom: 3rem;
 `;
 
-const CardGrid = styled.div`
+const VisionSection = styled.div`
+  text-align: center;
+  margin-bottom: 4rem;
+`;
+
+const VisionTitle = styled.h3`
+  color: ${colors.primary.main};
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+`;
+
+const VisionText = styled.p`
+  color: ${colors.text.primary};
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+`;
+
+const ValuesGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
+  margin-top: 3rem;
 `;
 
-const Card = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.05);
-  padding: 1.5rem;
-  border-radius: 10px;
-  border: 1px solid rgba(79, 172, 254, 0.1);
+const ValueCard = styled(motion.div)`
+  background: ${colors.background.card};
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px ${colors.shadow.light};
+  border: 2px solid ${colors.border.main};
+  text-align: center;
 
-  svg {
-    font-size: 2rem;
-    color: #4facfe;
-    margin-bottom: 1rem;
-  }
-
-  h3 {
-    color: #7dd3fc;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-  }
-
-  p {
-    color: #161616;
-    line-height: 1.6;
+  &:hover {
+    border-color: ${colors.primary.main};
+    box-shadow: 0 8px 24px ${colors.shadow.medium};
   }
 `;
 
-const PolicyList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
+const IconWrapper = styled.div`
+  font-size: 2.5rem;
+  color: ${colors.primary.main};
+  margin-bottom: 1.5rem;
 `;
 
-const PolicyItem = styled(motion.li)`
-  background: rgba(255, 255, 255, 0.05);
-  padding: 1.5rem;
-  border-radius: 10px;
+const ValueTitle = styled.h4`
+  color: ${colors.text.primary};
+  font-size: 1.4rem;
+  font-weight: 700;
   margin-bottom: 1rem;
-  border: 1px solid rgba(79, 172, 254, 0.1);
-  color: #2b2b2b;
+`;
 
-  h3 {
-    color: #7dd3fc;
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-  }
-
-  p {
-    line-height: 1.6;
-  }
+const ValueDescription = styled.p`
+  color: ${colors.text.primary};
+  font-size: 1.1rem;
+  line-height: 1.7;
 `;
 
 const Philosophy = () => {
   return (
-    <PhilosophyContainer
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-    >
+    <Container>
       <Section>
-        <SectionTitle>경영이념</SectionTitle>
-        <CardGrid>
-          <Card whileHover={{ scale: 1.05 }}>
-            <FaLightbulb />
-            <h3>불굴의 도전정신</h3>
-            <p>끊임없는 혁신과 도전을 통해 기술 발전을 선도하며, 
-               글로벌 시장에서 경쟁력을 확보합니다.</p>
-          </Card>
-          <Card whileHover={{ scale: 1.05 }}>
-            <FaUsers />
-            <h3>미래 개척</h3>
-            <p>지속적인 연구개발과 기술 혁신으로 반도체 산업의 
-               미래를 개척해 나갑니다.</p>
-          </Card>
-          <Card whileHover={{ scale: 1.05 }}>
-            <FaChartLine />
-            <h3>고객가치 증대</h3>
-            <p>고객의 성공이 곧 우리의 성공이라는 믿음으로 
-               최상의 가치를 제공합니다.</p>
-          </Card>
-        </CardGrid>
-      </Section>
+        <Title>경영이념</Title>
+        
+        <VisionSection>
+          <VisionTitle>Vision</VisionTitle>
+          <VisionText>
+            "글로벌 기술 혁신을 선도하는 신뢰받는 기업"
+          </VisionText>
+        </VisionSection>
 
-      <Section>
-        <SectionTitle>품질방침</SectionTitle>
-        <PolicyList>
-          <PolicyItem whileHover={{ scale: 1.02 }}>
-            <h3>고객만족 증대</h3>
-            <p>고객의 요구사항을 정확히 파악하고, 이를 충족시키기 위한 
-               최적의 솔루션을 제공합니다.</p>
-          </PolicyItem>
-          <PolicyItem whileHover={{ scale: 1.02 }}>
-            <h3>자발적 전원참가</h3>
-            <p>모든 임직원이 품질 향상에 자발적으로 참여하며, 
-               지속적인 교육과 훈련을 통해 전문성을 강화합니다.</p>
-          </PolicyItem>
-          <PolicyItem whileHover={{ scale: 1.02 }}>
-            <h3>지속적 프로세스 개선</h3>
-            <p>업무 프로세스를 지속적으로 개선하고 혁신하여 
-               효율성과 생산성을 향상시킵니다.</p>
-          </PolicyItem>
-        </PolicyList>
+        <ValuesGrid>
+          <ValueCard whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+            <IconWrapper>
+              <FaLightbulb />
+            </IconWrapper>
+            <ValueTitle>기술 혁신</ValueTitle>
+            <ValueDescription>
+              지속적인 연구개발과 혁신을 통해 
+              최고의 기술력을 확보하고 
+              산업 발전에 기여합니다.
+            </ValueDescription>
+          </ValueCard>
+
+          <ValueCard whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+            <IconWrapper>
+              <FaHandshake />
+            </IconWrapper>
+            <ValueTitle>고객 신뢰</ValueTitle>
+            <ValueDescription>
+              고객과의 신뢰를 최우선 가치로 삼아
+              최상의 제품과 서비스를 
+              제공합니다.
+            </ValueDescription>
+          </ValueCard>
+
+          <ValueCard whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+            <IconWrapper>
+              <FaUsers />
+            </IconWrapper>
+            <ValueTitle>인재 육성</ValueTitle>
+            <ValueDescription>
+              창의적이고 전문성 있는 인재를 
+              육성하여 함께 성장하는 
+              기업문화를 만듭니다.
+            </ValueDescription>
+          </ValueCard>
+
+          <ValueCard whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+            <IconWrapper>
+              <FaGlobe />
+            </IconWrapper>
+            <ValueTitle>글로벌 경쟁력</ValueTitle>
+            <ValueDescription>
+              세계 시장에서 인정받는 
+              기술력과 품질로 글로벌 
+              경쟁력을 강화합니다.
+            </ValueDescription>
+          </ValueCard>
+        </ValuesGrid>
       </Section>
-    </PhilosophyContainer>
+    </Container>
   );
 };
 

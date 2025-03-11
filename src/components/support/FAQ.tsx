@@ -1,247 +1,175 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaQuestionCircle, FaChevronDown, FaSearch } from 'react-icons/fa';
+import { FaChevronDown, FaQuestionCircle } from 'react-icons/fa';
+import { colors } from '../../styles/colors';
 
-const Container = styled(motion.div)`
-  display: grid;
-  gap: 2rem;
-`;
-
-const Section = styled.section`
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 15px;
+const Container = styled.div`
   padding: 2rem;
-  border: 1px solid rgba(79, 172, 254, 0.1);
+  max-width: 1000px;
+  margin: 0 auto;
 `;
 
 const Title = styled.h2`
+  color: ${colors.text.primary};
   font-size: 2rem;
-  color: #4facfe;
-  margin-bottom: 2rem;
+  font-weight: 700;
   text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-
-  svg {
-    font-size: 1.8rem;
-  }
+  margin-bottom: 3rem;
 `;
 
-const SearchBar = styled.div`
-  display: flex;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-  padding: 0.5rem 1rem;
-  margin-bottom: 2rem;
-  border: 1px solid rgba(79, 172, 254, 0.1);
-
-  svg {
-    color: #4facfe;
-    margin-right: 1rem;
-  }
-
-  input {
-    background: none;
-    border: none;
-    color: #e0e7ff;
-    width: 100%;
-    font-size: 1rem;
-    outline: none;
-
-    &::placeholder {
-      color: rgba(224, 231, 255, 0.5);
-    }
-  }
+const CategorySection = styled.div`
+  margin-bottom: 3rem;
 `;
 
-const CategoryTabs = styled.div`
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  overflow-x: auto;
+const CategoryTitle = styled.h3`
+  color: ${colors.text.primary};
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
-
-  &::-webkit-scrollbar {
-    height: 4px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 2px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: #4facfe;
-    border-radius: 2px;
-  }
-`;
-
-const CategoryTab = styled.button<{ active?: boolean }>`
-  background: ${props => props.active ? '#4facfe' : 'rgba(255, 255, 255, 0.05)'};
-  color: ${props => props.active ? '#000924' : '#e0e7ff'};
-  border: 1px solid ${props => props.active ? '#4facfe' : 'rgba(79, 172, 254, 0.1)'};
-  padding: 0.5rem 1.5rem;
-  border-radius: 20px;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: ${props => props.active ? '#4facfe' : 'rgba(79, 172, 254, 0.2)'};
-  }
-`;
-
-const FAQList = styled.div`
-  display: grid;
-  gap: 1rem;
+  border-bottom: 2px solid ${colors.primary.main};
 `;
 
 const FAQItem = styled.div`
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-  border: 1px solid rgba(79, 172, 254, 0.1);
+  margin-bottom: 1rem;
+  border: 2px solid ${colors.border.main};
+  border-radius: 12px;
   overflow: hidden;
+  background: ${colors.background.card};
+  box-shadow: 0 2px 8px ${colors.shadow.light};
+
+  &:hover {
+    border-color: ${colors.primary.main};
+    box-shadow: 0 4px 12px ${colors.shadow.medium};
+  }
 `;
 
-const Question = styled.button`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+const Question = styled.div`
   padding: 1.5rem;
-  background: none;
-  border: none;
-  color: #7dd3fc;
-  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   cursor: pointer;
-  text-align: left;
+  background: ${colors.background.card};
+  color: ${colors.text.primary};
+  font-weight: 600;
+  font-size: 1.1rem;
 
-  svg {
-    transition: transform 0.3s ease;
-    color: #4facfe;
+  &:hover {
+    background: ${colors.background.light};
   }
+`;
 
-  &[aria-expanded="true"] svg {
-    transform: rotate(180deg);
-  }
+const QuestionText = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
+
+const IconWrapper = styled.div<{ isOpen: boolean }>`
+  color: ${colors.primary.main};
+  transform: rotate(\${props => (props.isOpen ? '180deg' : '0')});
+  transition: transform 0.3s ease;
 `;
 
 const Answer = styled(motion.div)`
-  padding: 0 1.5rem 1.5rem;
-  color: #e0e7ff;
-  line-height: 1.6;
+  padding: 1.5rem;
+  color: ${colors.text.primary};
+  font-size: 1.1rem;
+  line-height: 1.7;
+  border-top: 1px solid ${colors.border.main};
+  background: ${colors.background.light};
 `;
 
 const FAQ = () => {
-  const [activeCategory, setActiveCategory] = useState("전체");
-  const [openItems, setOpenItems] = useState<number[]>([]);
+  const [openItems, setOpenItems] = useState<{ [key: string]: boolean }>({});
 
-  const categories = ["전체", "제품", "서비스", "기술지원", "납기/배송", "결제"];
-
-  const faqs = [
-    {
-      id: 1,
-      category: "제품",
-      question: "제품의 품질 보증 기간은 얼마인가요?",
-      answer: "당사의 모든 제품은 납품일로부터 1년간 품질을 보증합니다. 단, 소모성 부품이나 사용자 과실로 인한 손상은 보증에서 제외됩니다."
-    },
-    {
-      id: 2,
-      category: "서비스",
-      question: "긴급 기술 지원은 어떻게 요청하나요?",
-      answer: "24시간 긴급 기술 지원 핫라인(1588-XXXX)으로 연락주시면 즉시 대응해 드립니다. 상황에 따라 현장 방문도 가능합니다."
-    },
-    {
-      id: 3,
-      category: "기술지원",
-      question: "정기 유지보수 서비스는 어떻게 진행되나요?",
-      answer: "연간 계약을 통해 분기별 정기 점검 및 유지보수를 제공합니다. 필요한 소모품 교체 및 성능 최적화를 포함합니다."
-    },
-    {
-      id: 4,
-      category: "납기/배송",
-      question: "일반적인 납기 기간은 얼마나 되나요?",
-      answer: "표준 제품의 경우 주문 후 2-3주, 맞춤 제작 제품의 경우 4-6주가 소요됩니다. 긴급 건의 경우 별도 협의가 가능합니다."
-    },
-    {
-      id: 5,
-      category: "결제",
-      question: "대금 결제 조건은 어떻게 되나요?",
-      answer: "기본적으로 계약금 30%, 중도금 40%, 잔금 30%의 조건으로 진행됩니다. 장기 거래처의 경우 협의를 통해 조정 가능합니다."
-    }
-  ];
-
-  const toggleItem = (id: number) => {
-    setOpenItems(prev =>
-      prev.includes(id)
-        ? prev.filter(item => item !== id)
-        : [...prev, id]
-    );
+  const toggleItem = (id: string) => {
+    setOpenItems(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
-  const filteredFaqs = activeCategory === "전체"
-    ? faqs
-    : faqs.filter(faq => faq.category === activeCategory);
+  const faqData = {
+    general: {
+      title: '일반 문의',
+      items: [
+        {
+          id: 'g1',
+          question: '영업시간이 어떻게 되나요?',
+          answer: '평일 오전 9시부터 오후 6시까지 운영됩니다. 주말 및 공휴일은 휴무입니다.'
+        },
+        {
+          id: 'g2',
+          question: '견적 의뢰는 어떻게 하나요?',
+          answer: '홈페이지 문의하기 페이지 또는 전화를 통해 견적 의뢰가 가능합니다. 상세한 요구사항을 함께 전달해 주시면 더 정확한 견적 산출이 가능합니다.'
+        }
+      ]
+    },
+    technical: {
+      title: '기술 문의',
+      items: [
+        {
+          id: 't1',
+          question: '품질 보증 기간은 얼마인가요?',
+          answer: '제품별로 상이하며, 일반적으로 1년의 품질 보증 기간을 제공합니다. 자세한 사항은 개별 제품의 보증서를 참고해 주세요.'
+        },
+        {
+          id: 't2',
+          question: 'A/S 신청은 어떻게 하나요?',
+          answer: '전화 또는 홈페이지 문의하기를 통해 A/S 신청이 가능합니다. 제품의 증상과 모델명을 함께 알려주시면 신속한 처리가 가능합니다.'
+        }
+      ]
+    },
+    delivery: {
+      title: '배송 문의',
+      items: [
+        {
+          id: 'd1',
+          question: '배송 소요기간이 얼마나 되나요?',
+          answer: '일반 제품의 경우 3-5일, 맞춤 제작 제품의 경우 협의된 제작 기간에 따라 배송이 진행됩니다.'
+        },
+        {
+          id: 'd2',
+          question: '해외 배송도 가능한가요?',
+          answer: '네, 해외 배송 가능합니다. 국가별로 배송 비용과 소요기간이 다르므로 별도 문의 부탁드립니다.'
+        }
+      ]
+    }
+  };
 
   return (
-    <Container
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-    >
-      <Section>
-        <Title>
-          <FaQuestionCircle />
-          자주 묻는 질문
-        </Title>
-
-        <SearchBar>
-          <FaSearch />
-          <input type="text" placeholder="질문 검색하기..." />
-        </SearchBar>
-
-        <CategoryTabs>
-          {categories.map((category) => (
-            <CategoryTab
-              key={category}
-              active={category === activeCategory}
-              onClick={() => setActiveCategory(category)}
-            >
-              {category}
-            </CategoryTab>
-          ))}
-        </CategoryTabs>
-
-        <FAQList>
-          {filteredFaqs.map((faq) => (
-            <FAQItem key={faq.id}>
-              <Question
-                onClick={() => toggleItem(faq.id)}
-                aria-expanded={openItems.includes(faq.id)}
-              >
-                {faq.question}
-                <FaChevronDown />
+    <Container>
+      <Title>자주 묻는 질문</Title>
+      {Object.entries(faqData).map(([category, { title, items }]) => (
+        <CategorySection key={category}>
+          <CategoryTitle>{title}</CategoryTitle>
+          {items.map(item => (
+            <FAQItem key={item.id}>
+              <Question onClick={() => toggleItem(item.id)}>
+                <QuestionText>
+                  <FaQuestionCircle color={colors.primary.main} />
+                  {item.question}
+                </QuestionText>
+                <IconWrapper isOpen={openItems[item.id]}>
+                  <FaChevronDown />
+                </IconWrapper>
               </Question>
               <AnimatePresence>
-                {openItems.includes(faq.id) && (
+                {openItems[item.id] && (
                   <Answer
                     initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
+                    animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    {faq.answer}
+                    {item.answer}
                   </Answer>
                 )}
               </AnimatePresence>
             </FAQItem>
           ))}
-        </FAQList>
-      </Section>
+        </CategorySection>
+      ))}
     </Container>
   );
 };

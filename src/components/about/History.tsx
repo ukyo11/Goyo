@@ -1,20 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaRegCalendarAlt } from 'react-icons/fa';
+import { colors } from '../../styles/colors';
 
-const HistoryContainer = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 15px;
+const Container = styled.div`
   padding: 2rem;
-  border: 1px solid rgba(79, 172, 254, 0.1);
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
+const Section = styled.section`
+  margin-bottom: 4rem;
 `;
 
 const Title = styled.h2`
-  font-size: 2rem;
-  color: #4facfe;
-  margin-bottom: 2rem;
+  color: ${colors.text.primary};
+  font-size: 2.5rem;
+  font-weight: 800;
   text-align: center;
+  margin-bottom: 3rem;
 `;
 
 const Timeline = styled.div`
@@ -31,12 +35,10 @@ const Timeline = styled.div`
     transform: translateX(-50%);
     width: 2px;
     height: 100%;
-    background: rgba(79, 172, 254, 0.3);
-  }
+    background: ${colors.primary.main};
 
-  @media (max-width: 768px) {
-    &::before {
-      left: 30px;
+    @media (max-width: 768px) {
+      left: 0;
     }
   }
 `;
@@ -56,161 +58,172 @@ const TimelineItem = styled(motion.div)`
 
   @media (max-width: 768px) {
     padding-right: 0;
-    padding-left: 70px;
+    padding-left: 2rem;
 
     &:nth-child(even) {
-      padding-left: 70px;
+      padding-left: 2rem;
+    }
+  }
+`;
+
+const TimelineDot = styled.div`
+  position: absolute;
+  right: -6px;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: ${colors.primary.main};
+  border: 2px solid white;
+  box-shadow: 0 0 0 4px ${colors.primary.main}33;
+
+  ${TimelineItem}:nth-child(even) & {
+    right: auto;
+    left: -6px;
+  }
+
+  @media (max-width: 768px) {
+    left: -6px;
+    ${TimelineItem}:nth-child(even) & {
+      left: -6px;
     }
   }
 `;
 
 const TimelineContent = styled.div`
-  background: rgba(255, 255, 255, 0.05);
+  background: ${colors.background.card};
   padding: 1.5rem;
-  border-radius: 10px;
-  border: 1px solid rgba(79, 172, 254, 0.1);
-  width: 80%;
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 2px;
-    background: rgba(79, 172, 254, 0.3);
-  }
-
-  ${TimelineItem}:nth-child(odd) & {
-    &::before {
-      right: -20px;
-    }
-  }
+  border-radius: 12px;
+  box-shadow: 0 4px 12px ${colors.shadow.light};
+  border: 2px solid ${colors.border.main};
+  width: 90%;
+  margin-right: 2rem;
 
   ${TimelineItem}:nth-child(even) & {
-    &::before {
-      left: -20px;
-    }
+    margin-right: 0;
+    margin-left: 2rem;
   }
 
   @media (max-width: 768px) {
     width: 100%;
-
-    &::before {
-      left: -40px !important;
+    margin-right: 0;
+    ${TimelineItem}:nth-child(even) & {
+      margin-left: 0;
     }
+  }
+
+  &:hover {
+    border-color: ${colors.primary.main};
+    box-shadow: 0 8px 24px ${colors.shadow.medium};
   }
 `;
 
 const Year = styled.div`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #4facfe;
-  color: #000924;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-
-  ${TimelineItem}:nth-child(odd) & {
-    left: calc(100% - 45%);
-  }
-
-  ${TimelineItem}:nth-child(even) & {
-    right: calc(100% - 45%);
-  }
-
-  @media (max-width: 768px) {
-    left: 0 !important;
-  }
+  color: ${colors.primary.main};
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
 `;
 
-const Event = styled.div`
-  color: #e0e7ff;
+const EventList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+`;
 
-  h3 {
-    color: #7dd3fc;
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-  }
+const Event = styled.li`
+  color: ${colors.text.primary};
+  font-size: 1.1rem;
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
 
-  p {
-    line-height: 1.6;
+  &::before {
+    content: "•";
+    color: ${colors.primary.main};
+    font-weight: bold;
   }
 `;
 
 const History = () => {
   const historyData = [
     {
-      year: "2023",
+      year: '2023',
       events: [
-        { title: "제2공장 준공", description: "화성시 00구 신규 공장 준공" },
-        { title: "ISO 14001 인증 획득", description: "환경경영시스템 인증" }
+        '글로벌 기술혁신상 수상',
+        '베트남 지사 설립',
+        '연매출 1000억 달성'
       ]
     },
     {
-      year: "2020",
+      year: '2020',
       events: [
-        { title: "기업부설연구소 설립", description: "R&D 역량 강화" },
-        { title: "매출 100억 달성", description: "연간 매출 신기록 달성" }
+        'ISO 14001 인증 획득',
+        '중국 현지 법인 설립',
+        'R&D 센터 준공'
       ]
     },
     {
-      year: "2018",
+      year: '2015',
       events: [
-        { title: "제1공장 확장", description: "생산능력 50% 증대" },
-        { title: "ISO 9001 인증 획득", description: "품질경영시스템 인증" }
+        '기업부설연구소 설립',
+        '벤처기업 인증',
+        '자본금 증자 (50억원)'
       ]
     },
     {
-      year: "2015",
+      year: '2010',
       events: [
-        { title: "첫 해외 수출", description: "대만, 중국 시장 진출" }
+        'ISO 9001 인증 획득',
+        '본사 이전 (화성시)',
+        '제2공장 준공'
       ]
     },
     {
-      year: "2012",
+      year: '2005',
       events: [
-        { title: "회사 설립", description: "고요엔지니어링 설립" }
+        '기술혁신형 중소기업 선정',
+        '첫 해외 수출',
+        '생산설비 확충'
+      ]
+    },
+    {
+      year: '2000',
+      events: [
+        '회사 설립',
+        '첫 제품 출시',
+        '기업 부설 연구소 설립'
       ]
     }
   ];
 
   return (
-    <HistoryContainer
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-    >
-      <Title>연혁</Title>
-      <Timeline>
-        {historyData.map((item, index) => (
-          <TimelineItem
-            key={item.year}
-            initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: index * 0.2 }}
-          >
-            <Year>
-              <FaRegCalendarAlt />
-              {item.year}
-            </Year>
-            <TimelineContent>
-              {item.events.map((event, eventIndex) => (
-                <Event key={eventIndex}>
-                  <h3>{event.title}</h3>
-                  <p>{event.description}</p>
-                </Event>
-              ))}
-            </TimelineContent>
-          </TimelineItem>
-        ))}
-      </Timeline>
-    </HistoryContainer>
+    <Container>
+      <Section>
+        <Title>연혁</Title>
+        <Timeline>
+          {historyData.map((item, index) => (
+            <TimelineItem
+              key={item.year}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+            >
+              <TimelineDot />
+              <TimelineContent>
+                <Year>{item.year}</Year>
+                <EventList>
+                  {item.events.map((event, eventIndex) => (
+                    <Event key={eventIndex}>{event}</Event>
+                  ))}
+                </EventList>
+              </TimelineContent>
+            </TimelineItem>
+          ))}
+        </Timeline>
+      </Section>
+    </Container>
   );
 };
 

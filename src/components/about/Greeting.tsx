@@ -1,122 +1,127 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaHandshake, FaUserTie, FaIndustry } from 'react-icons/fa';
+import { colors } from '../../styles/colors';
 
-const GreetingContainer = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 15px;
+const Container = styled.div`
   padding: 2rem;
-  border: 1px solid rgba(79, 172, 254, 0.1);
+  max-width: 1200px;
+  margin: 0 auto;
 `;
 
-const GreetingHeader = styled.div`
+const Section = styled.section`
+  margin-bottom: 4rem;
+`;
+
+const Title = styled.h2`
+  color: ${colors.text.primary};
+  font-size: 2.5rem;
+  font-weight: 800;
   text-align: center;
   margin-bottom: 3rem;
 `;
 
-const Title = styled.h2`
-  font-size: 2rem;
-  color: #4facfe;
-  margin-bottom: 1rem;
-`;
-
-const Content = styled.div`
-  line-height: 1.8;
-  color: #e0e7ff;
-`;
-
-const Paragraph = styled.p`
-  margin-bottom: 1.5rem;
-`;
-
-const ValueSection = styled.div`
+const ContentWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
+  gap: 3rem;
+  align-items: center;
+  
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
-const ValueCard = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.05);
-  padding: 1.5rem;
-  border-radius: 10px;
-  text-align: center;
-  border: 1px solid rgba(79, 172, 254, 0.1);
-
-  svg {
-    font-size: 2rem;
-    color: #4facfe;
-    margin-bottom: 1rem;
+const ImageWrapper = styled.div`
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px ${colors.shadow.medium};
+  
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
+`;
 
-  h3 {
-    color: #7dd3fc;
-    margin-bottom: 0.5rem;
+const TextContent = styled.div`
+  color: ${colors.text.primary};
+`;
+
+const Greeting = styled.p`
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  color: ${colors.primary.main};
+`;
+
+const Message = styled.div`
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+
+  p {
+    margin-bottom: 1.5rem;
+    color: ${colors.text.primary};
   }
 `;
 
 const Signature = styled.div`
   text-align: right;
-  margin-top: 3rem;
   font-size: 1.2rem;
-  color: #4facfe;
+  font-weight: 600;
+  
+  .position {
+    font-size: 1rem;
+    color: ${colors.text.secondary};
+    margin-bottom: 0.5rem;
+  }
+  
+  .name {
+    color: ${colors.text.primary};
+    font-size: 1.3rem;
+  }
 `;
 
-const Greeting = () => {
+const GreetingComponent = () => {
   return (
-    <GreetingContainer
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-    >
-      <GreetingHeader>
+    <Container>
+      <Section>
         <Title>인사말</Title>
-      </GreetingHeader>
-      
-      <Content>
-        <Paragraph>
-          안녕하십니까, 고요엔지니어링 홈페이지를 방문해 주신 여러분을 진심으로 환영합니다.
-        </Paragraph>
-        
-        <Paragraph>
-          저희 고요엔지니어링은 반도체와 디스플레이 산업의 핵심 설비 제작 분야에서
-          고객사와 함께 성장해 온 기업입니다. 설립 이래로 "고객만족", "신의", "정직"이라는
-          핵심가치를 바탕으로 최고의 품질과 서비스를 제공하기 위해 끊임없이 노력해 왔습니다.
-        </Paragraph>
-
-        <Paragraph>
-          급변하는 글로벌 시장 환경 속에서도 기술 혁신과 품질 향상을 통해
-          고객의 신뢰를 쌓아가며, 반도체 산업의 발전에 기여하고 있습니다.
-          앞으로도 끊임없는 연구개발과 혁신을 통해 글로벌 경쟁력을 갖춘
-          기업으로 성장해 나갈 것을 약속드립니다.
-        </Paragraph>
-
-        <ValueSection>
-          <ValueCard whileHover={{ scale: 1.05 }}>
-            <FaHandshake />
-            <h3>고객만족</h3>
-            <p>고객의 니즈를 최우선으로 생각하며, 최상의 서비스를 제공합니다.</p>
-          </ValueCard>
-          <ValueCard whileHover={{ scale: 1.05 }}>
-            <FaUserTie />
-            <h3>신의</h3>
-            <p>약속과 신뢰를 바탕으로 고객과의 관계를 소중히 합니다.</p>
-          </ValueCard>
-          <ValueCard whileHover={{ scale: 1.05 }}>
-            <FaIndustry />
-            <h3>정직</h3>
-            <p>투명하고 정직한 경영으로 신뢰받는 기업이 되겠습니다.</p>
-          </ValueCard>
-        </ValueSection>
-
-        <Signature>
-          <p>고요엔지니어링</p>
-          <p>대표이사 홍길동</p>
-        </Signature>
-      </Content>
-    </GreetingContainer>
+        <ContentWrapper>
+          <ImageWrapper>
+            <img src="/images/ceo.jpg" alt="CEO" />
+          </ImageWrapper>
+          <TextContent>
+            <Greeting>
+              "혁신적인 기술과 신뢰로 미래를 창조하는 기업이 되겠습니다"
+            </Greeting>
+            <Message>
+              <p>
+                안녕하십니까, 저희 홈페이지를 방문해 주셔서 감사합니다.
+              </p>
+              <p>
+                당사는 설립 이래 고객의 신뢰를 바탕으로 지속적인 기술 혁신과
+                품질 향상을 통해 성장해 왔습니다. 첨단 기술력과 풍부한 경험을
+                바탕으로 고객의 다양한 요구에 부응하며, 글로벌 시장에서
+                경쟁력을 갖춘 기업으로 발전하고 있습니다.
+              </p>
+              <p>
+                앞으로도 끊임없는 연구개발과 품질 혁신을 통해 고객 만족을
+                실현하고, 사회적 책임을 다하는 기업이 되도록 최선을
+                다하겠습니다.
+              </p>
+            </Message>
+            <Signature>
+              <div className="position">대표이사</div>
+              <div className="name">홍 길 동</div>
+            </Signature>
+          </TextContent>
+        </ContentWrapper>
+      </Section>
+    </Container>
   );
 };
 
-export default Greeting; 
+export default GreetingComponent; 

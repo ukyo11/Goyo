@@ -1,242 +1,212 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaMicrochip, FaCogs, FaWrench, FaIndustry } from 'react-icons/fa';
+import { FaMicrochip, FaCogs, FaIndustry, FaTools, FaRobot, FaMemory } from 'react-icons/fa';
+import { colors } from '../../styles/colors';
 
-const Container = styled(motion.div)`
-  display: grid;
-  gap: 2rem;
+const Container = styled.div`
+  padding: 2rem;
 `;
 
 const Section = styled.section`
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 15px;
-  padding: 2rem;
-  border: 1px solid rgba(79, 172, 254, 0.1);
+  margin-bottom: 4rem;
 `;
 
-const Title = styled.h2`
+const SectionTitle = styled.h2`
+  color: ${colors.text.primary};
   font-size: 2rem;
-  color: #4facfe;
-  margin-bottom: 2rem;
+  font-weight: 700;
   text-align: center;
+  margin-bottom: 2rem;
 `;
 
 const Description = styled.p`
-  color: #e0e7ff;
-  line-height: 1.8;
+  color: ${colors.text.primary};
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
   text-align: center;
-  margin-bottom: 3rem;
+  max-width: 800px;
+  margin: 0 auto 2rem;
 `;
 
-const CategoryGrid = styled.div`
+const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
+  margin: 2rem 0;
 `;
 
-const CategoryCard = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.05);
-  padding: 1.5rem;
-  border-radius: 10px;
-  border: 1px solid rgba(79, 172, 254, 0.1);
+const Card = styled(motion.div)`
+  background: ${colors.background.card};
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px ${colors.shadow.light};
+  border: 2px solid ${colors.border.main};
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px ${colors.shadow.medium};
+    border-color: ${colors.primary.main};
+  }
 `;
 
-const CategoryHeader = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+const IconWrapper = styled.div`
+  font-size: 2.5rem;
+  color: ${colors.primary.main};
   margin-bottom: 1.5rem;
-  
-  svg {
-    font-size: 2rem;
-    color: #4facfe;
-  }
-
-  h3 {
-    color: #7dd3fc;
-    font-size: 1.2rem;
-  }
+  text-align: center;
 `;
 
-const PartsList = styled.ul`
+const CardTitle = styled.h3`
+  color: ${colors.text.primary};
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+`;
+
+const FeatureList = styled.ul`
   list-style: none;
   padding: 0;
-  margin: 0;
 `;
 
-const PartItem = styled(motion.li)`
-  background: rgba(255, 255, 255, 0.02);
-  margin-bottom: 0.5rem;
-  padding: 1rem;
-  border-radius: 8px;
-  border: 1px solid rgba(79, 172, 254, 0.05);
+const FeatureItem = styled.li`
+  color: ${colors.text.primary};
+  font-size: 1.1rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid ${colors.border.main};
+  display: flex;
+  align-items: center;
 
-  h4 {
-    color: #7dd3fc;
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
+  &:last-child {
+    border-bottom: none;
   }
 
-  p {
-    color: #e0e7ff;
-    font-size: 0.9rem;
-    line-height: 1.6;
+  &::before {
+    content: "•";
+    color: ${colors.primary.main};
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin-right: 0.8rem;
   }
 `;
 
-const ImageGrid = styled.div`
+const SpecSection = styled.div`
+  margin-top: 4rem;
+`;
+
+const SpecGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
   margin-top: 2rem;
 `;
 
-const ImageCard = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-  overflow: hidden;
-  aspect-ratio: 1;
-  
-  .image-placeholder {
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #4facfe;
-    font-size: 2rem;
+const SpecCard = styled(motion.div)`
+  background: ${colors.background.card};
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px ${colors.shadow.light};
+  border: 2px solid ${colors.border.main};
+  text-align: center;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px ${colors.shadow.medium};
+    border-color: ${colors.primary.main};
   }
 `;
 
-const Parts = () => {
-  const categories = [
-    {
-      icon: <FaMicrochip />,
-      title: "Chamber Components",
-      parts: [
-        {
-          name: "Chamber Liner",
-          description: "고순도 알루미늄 소재의 챔버 라이너",
-          specs: "6061-T6 / 7075-T6"
-        },
-        {
-          name: "Shower Head",
-          description: "균일한 가스 분사를 위한 샤워 헤드",
-          specs: "SUS316L"
-        },
-        {
-          name: "Focus Ring",
-          description: "플라즈마 집중용 포커스 링",
-          specs: "Quartz / SiC"
-        }
-      ]
-    },
-    {
-      icon: <FaCogs />,
-      title: "Gas Delivery Parts",
-      parts: [
-        {
-          name: "Mass Flow Controller",
-          description: "정밀한 가스 유량 제어",
-          specs: "최대 유량: 1000 sccm"
-        },
-        {
-          name: "Gas Filter",
-          description: "고순도 가스 필터링",
-          specs: "0.003μm 필터링"
-        },
-        {
-          name: "Valve Block",
-          description: "통합형 밸브 블록",
-          specs: "SUS316L"
-        }
-      ]
-    },
-    {
-      icon: <FaWrench />,
-      title: "Mechanical Parts",
-      parts: [
-        {
-          name: "Robot Arm Parts",
-          description: "웨이퍼 이송용 로봇 부품",
-          specs: "Al6061 / SUS304"
-        },
-        {
-          name: "Alignment Stage",
-          description: "정밀 얼라인먼트 스테이지",
-          specs: "정밀도: ±0.01mm"
-        },
-        {
-          name: "Vacuum Parts",
-          description: "진공 시스템 부품",
-          specs: "ISO-K / CF 플랜지"
-        }
-      ]
-    }
-  ];
-
+const ProductParts = () => {
   return (
-    <Container
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-    >
+    <Container>
       <Section>
-        <Title>취급 부품/파트</Title>
+        <SectionTitle>취급 부품/파트</SectionTitle>
         <Description>
-          반도체 및 디스플레이 장비의 핵심 부품을 제작하고 공급합니다.
-          최고 품질의 소재와 정밀 가공 기술로 신뢰성 높은 제품을 제공합니다.
+          다양한 산업 분야에 적용되는 고품질 부품과 파트를 제공합니다.
         </Description>
+        <Grid>
+          <Card whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+            <IconWrapper>
+              <FaMicrochip />
+            </IconWrapper>
+            <CardTitle>반도체 부품</CardTitle>
+            <FeatureList>
+              <FeatureItem>웨이퍼 처리 부품</FeatureItem>
+              <FeatureItem>진공 챔버 부품</FeatureItem>
+              <FeatureItem>공정 장비 부품</FeatureItem>
+            </FeatureList>
+          </Card>
 
-        <CategoryGrid>
-          {categories.map((category, index) => (
-            <CategoryCard
-              key={index}
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <CategoryHeader>
-                {category.icon}
-                <h3>{category.title}</h3>
-              </CategoryHeader>
-              <PartsList>
-                {category.parts.map((part, partIndex) => (
-                  <PartItem
-                    key={partIndex}
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <h4>{part.name}</h4>
-                    <p>{part.description}</p>
-                    <p>사양: {part.specs}</p>
-                  </PartItem>
-                ))}
-              </PartsList>
-            </CategoryCard>
-          ))}
-        </CategoryGrid>
+          <Card whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+            <IconWrapper>
+              <FaCogs />
+            </IconWrapper>
+            <CardTitle>정밀기계 부품</CardTitle>
+            <FeatureList>
+              <FeatureItem>감속기 부품</FeatureItem>
+              <FeatureItem>베어링 하우징</FeatureItem>
+              <FeatureItem>커플링 부품</FeatureItem>
+            </FeatureList>
+          </Card>
+
+          <Card whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+            <IconWrapper>
+              <FaRobot />
+            </IconWrapper>
+            <CardTitle>자동화 부품</CardTitle>
+            <FeatureList>
+              <FeatureItem>로봇 관절 부품</FeatureItem>
+              <FeatureItem>컨베이어 부품</FeatureItem>
+              <FeatureItem>그리퍼 부품</FeatureItem>
+            </FeatureList>
+          </Card>
+        </Grid>
       </Section>
 
-      <Section>
-        <Title>제품 갤러리</Title>
-        <ImageGrid>
-          {[1, 2, 3, 4, 5, 6].map((item) => (
-            <ImageCard
-              key={item}
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <div className="image-placeholder">
-                <FaIndustry />
-              </div>
-            </ImageCard>
-          ))}
-        </ImageGrid>
-      </Section>
+      <SpecSection>
+        <SectionTitle>산업별 특화 부품</SectionTitle>
+        <SpecGrid>
+          <SpecCard whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+            <IconWrapper>
+              <FaMemory />
+            </IconWrapper>
+            <CardTitle>디스플레이</CardTitle>
+            <FeatureList>
+              <FeatureItem>패널 이송 부품</FeatureItem>
+              <FeatureItem>얼라인먼트 부품</FeatureItem>
+              <FeatureItem>검사 장비 부품</FeatureItem>
+            </FeatureList>
+          </SpecCard>
+
+          <SpecCard whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+            <IconWrapper>
+              <FaIndustry />
+            </IconWrapper>
+            <CardTitle>중공업</CardTitle>
+            <FeatureList>
+              <FeatureItem>대형 기계 부품</FeatureItem>
+              <FeatureItem>유압 시스템 부품</FeatureItem>
+              <FeatureItem>조선 기자재</FeatureItem>
+            </FeatureList>
+          </SpecCard>
+
+          <SpecCard whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+            <IconWrapper>
+              <FaTools />
+            </IconWrapper>
+            <CardTitle>항공우주</CardTitle>
+            <FeatureList>
+              <FeatureItem>엔진 부품</FeatureItem>
+              <FeatureItem>구조물 부품</FeatureItem>
+              <FeatureItem>특수 소재 부품</FeatureItem>
+            </FeatureList>
+          </SpecCard>
+        </SpecGrid>
+      </SpecSection>
     </Container>
   );
 };
 
-export default Parts; 
+export default ProductParts; 

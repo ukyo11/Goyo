@@ -30,7 +30,7 @@ import Contact from './components/support/Contact';
 
 function App() {
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router basename="/goyo-web">
       <div className="App">
         <Navigation />
         <Routes>
@@ -70,4 +70,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;

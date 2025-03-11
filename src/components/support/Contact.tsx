@@ -1,72 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
+import { FaPaperPlane, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { colors } from '../../styles/colors';
 
-const Container = styled(motion.div)`
+const Container = styled.div`
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
   display: grid;
-  gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
-const Section = styled.section`
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 15px;
+const FormSection = styled.div`
+  background: ${colors.background.card};
   padding: 2rem;
-  border: 1px solid rgba(79, 172, 254, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px ${colors.shadow.light};
+  border: 2px solid ${colors.border.main};
 `;
 
 const Title = styled.h2`
+  color: ${colors.text.primary};
   font-size: 2rem;
-  color: #4facfe;
+  font-weight: 700;
   margin-bottom: 2rem;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-
-  svg {
-    font-size: 1.8rem;
-  }
-`;
-
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-bottom: 3rem;
-`;
-
-const ContactCard = styled.div`
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-  padding: 2rem;
-  text-align: center;
-  border: 1px solid rgba(79, 172, 254, 0.1);
-
-  svg {
-    font-size: 2.5rem;
-    color: #4facfe;
-    margin-bottom: 1rem;
-  }
-
-  h3 {
-    color: #7dd3fc;
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-  }
-
-  p {
-    color: #e0e7ff;
-    line-height: 1.6;
-  }
 `;
 
 const Form = styled.form`
   display: grid;
   gap: 1.5rem;
-  max-width: 800px;
-  margin: 0 auto;
 `;
 
 const FormGroup = styled.div`
@@ -75,169 +43,226 @@ const FormGroup = styled.div`
 `;
 
 const Label = styled.label`
-  color: #7dd3fc;
-  font-size: 1rem;
+  color: ${colors.text.primary};
+  font-size: 1.1rem;
+  font-weight: 600;
+
+  span {
+    color: ${colors.primary.main};
+    margin-left: 0.25rem;
+  }
 `;
 
 const Input = styled.input`
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(79, 172, 254, 0.1);
-  border-radius: 5px;
-  padding: 0.8rem;
-  color: #e0e7ff;
-  font-size: 1rem;
-  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 2px solid ${colors.border.main};
+  border-radius: 8px;
+  font-size: 1.1rem;
+  color: ${colors.text.primary};
+  background: ${colors.background.main};
 
   &:focus {
     outline: none;
-    border-color: #4facfe;
+    border-color: ${colors.primary.main};
   }
 `;
 
-const Select = styled.select`
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(79, 172, 254, 0.1);
-  border-radius: 5px;
-  padding: 0.8rem;
-  color: #e0e7ff;
-  font-size: 1rem;
-  width: 100%;
-
-  &:focus {
-    outline: none;
-    border-color: #4facfe;
-  }
-
-  option {
-    background: #000924;
-  }
-`;
-
-const Textarea = styled.textarea`
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(79, 172, 254, 0.1);
-  border-radius: 5px;
-  padding: 0.8rem;
-  color: #e0e7ff;
-  font-size: 1rem;
-  width: 100%;
+const TextArea = styled.textarea`
+  padding: 0.8rem 1rem;
+  border: 2px solid ${colors.border.main};
+  border-radius: 8px;
+  font-size: 1.1rem;
+  color: ${colors.text.primary};
+  background: ${colors.background.main};
   min-height: 150px;
   resize: vertical;
 
   &:focus {
     outline: none;
-    border-color: #4facfe;
+    border-color: ${colors.primary.main};
   }
 `;
 
 const SubmitButton = styled(motion.button)`
-  background: #4facfe;
-  color: #000924;
+  padding: 1rem 2rem;
+  background: ${colors.primary.main};
+  color: white;
   border: none;
-  border-radius: 5px;
-  padding: 1rem;
-  font-size: 1rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  width: 100%;
-  max-width: 200px;
-  margin: 2rem auto 0;
+
+  &:hover {
+    background: ${colors.primary.dark};
+  }
+`;
+
+const InfoSection = styled.div`
+  display: grid;
+  gap: 2rem;
+`;
+
+const InfoCard = styled.div`
+  background: ${colors.background.card};
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px ${colors.shadow.light};
+  border: 2px solid ${colors.border.main};
+`;
+
+const InfoTitle = styled.h3`
+  color: ${colors.text.primary};
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+`;
+
+const InfoList = styled.ul`
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 1.5rem;
+`;
+
+const InfoItem = styled.li`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: ${colors.text.primary};
+  font-size: 1.1rem;
 
   svg {
-    font-size: 1.2rem;
+    color: ${colors.primary.main};
+    font-size: 1.5rem;
   }
 `;
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: ''
+  });
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // 폼 제출 로직 구현
+    // 여기에 폼 제출 로직 추가
+    console.log('Form submitted:', formData);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   return (
-    <Container
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-    >
-      <Section>
-        <Title>
-          <FaEnvelope />
-          문의하기
-        </Title>
-
-        <Grid>
-          <ContactCard>
-            <FaPhone />
-            <h3>전화 문의</h3>
-            <p>1588-XXXX</p>
-            <p>평일 09:00 - 18:00</p>
-          </ContactCard>
-          <ContactCard>
-            <FaEnvelope />
-            <h3>이메일 문의</h3>
-            <p>support@goyo.com</p>
-            <p>24시간 접수 가능</p>
-          </ContactCard>
-          <ContactCard>
-            <FaMapMarkerAlt />
-            <h3>방문 상담</h3>
-            <p>경기도 화성시 동탄면</p>
-            <p>사전 예약 필수</p>
-          </ContactCard>
-        </Grid>
-
+    <Container>
+      <FormSection>
+        <Title>문의하기</Title>
         <Form onSubmit={handleSubmit}>
           <FormGroup>
-            <Label>문의 유형</Label>
-            <Select required>
-              <option value="">선택해주세요</option>
-              <option value="product">제품 문의</option>
-              <option value="service">서비스 문의</option>
-              <option value="technical">기술 지원</option>
-              <option value="partnership">제휴 문의</option>
-              <option value="other">기타</option>
-            </Select>
+            <Label>이름 <span>*</span></Label>
+            <Input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
           </FormGroup>
-
           <FormGroup>
-            <Label>회사명</Label>
-            <Input type="text" required placeholder="회사명을 입력해주세요" />
+            <Label>이메일 <span>*</span></Label>
+            <Input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
           </FormGroup>
-
-          <FormGroup>
-            <Label>담당자명</Label>
-            <Input type="text" required placeholder="담당자명을 입력해주세요" />
-          </FormGroup>
-
           <FormGroup>
             <Label>연락처</Label>
-            <Input type="tel" required placeholder="연락처를 입력해주세요" />
+            <Input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+            />
           </FormGroup>
-
           <FormGroup>
-            <Label>이메일</Label>
-            <Input type="email" required placeholder="이메일을 입력해주세요" />
+            <Label>제목 <span>*</span></Label>
+            <Input
+              type="text"
+              name="subject"
+              value={formData.subject}
+              onChange={handleChange}
+              required
+            />
           </FormGroup>
-
           <FormGroup>
-            <Label>문의 내용</Label>
-            <Textarea required placeholder="문의하실 내용을 자세히 적어주세요" />
+            <Label>문의내용 <span>*</span></Label>
+            <TextArea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+            />
           </FormGroup>
-
           <SubmitButton
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             type="submit"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
           >
             <FaPaperPlane />
             문의하기
           </SubmitButton>
         </Form>
-      </Section>
+      </FormSection>
+
+      <InfoSection>
+        <InfoCard>
+          <InfoTitle>연락처 정보</InfoTitle>
+          <InfoList>
+            <InfoItem>
+              <FaPhone />
+              전화: 02-1234-5678
+            </InfoItem>
+            <InfoItem>
+              <FaEnvelope />
+              이메일: info@company.com
+            </InfoItem>
+            <InfoItem>
+              <FaMapMarkerAlt />
+              주소: 서울특별시 강남구 테헤란로 123
+            </InfoItem>
+          </InfoList>
+        </InfoCard>
+
+        <InfoCard>
+          <InfoTitle>상담 시간</InfoTitle>
+          <InfoList>
+            <InfoItem>
+              평일: 09:00 - 18:00
+            </InfoItem>
+            <InfoItem>
+              점심시간: 12:00 - 13:00
+            </InfoItem>
+            <InfoItem>
+              주말 및 공휴일 휴무
+            </InfoItem>
+          </InfoList>
+        </InfoCard>
+      </InfoSection>
     </Container>
   );
 };

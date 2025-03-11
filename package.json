@@ -1,6 +1,6 @@
 {
   "name": "goyo",
-  "homepage": "https://ukyo11.github.io/goyo",
+  "homepage": "./",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,7 +13,6 @@
     "@types/react-dom": "^18.0.0",
     "@types/styled-components": "^5.1.26",
     "framer-motion": "^10.0.0",
-    "gh-pages": "^6.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
@@ -48,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
