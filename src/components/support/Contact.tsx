@@ -235,15 +235,15 @@ const Contact = () => {
           <InfoList>
             <InfoItem>
               <FaPhone />
-              전화: 02-1234-5678
+              전화: 031-304-2099
             </InfoItem>
             <InfoItem>
               <FaEnvelope />
-              이메일: info@company.com
+              이메일: cblee@higoyo.co.kr
             </InfoItem>
             <InfoItem>
               <FaMapMarkerAlt />
-              주소: 서울특별시 강남구 테헤란로 123
+              주소: 경기도 용인시 수지구 포은대로 59번길 37, B410(상현동, 시그니처 광교)
             </InfoItem>
           </InfoList>
         </InfoCard>
