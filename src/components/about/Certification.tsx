@@ -108,7 +108,7 @@ const Certification = () => {
             <FaMedal />
           </IconWrapper>
           <CertificationName>ISO 9001</CertificationName>
-          <CertificationDate>인증일: 2020년 3월</CertificationDate>
+          <CertificationDate>인증일: 준비중</CertificationDate>
           <CertificationDescription>
             국제 품질 경영 시스템 표준 인증
           </CertificationDescription>
@@ -127,7 +127,7 @@ const Certification = () => {
             <FaCertificate />
           </IconWrapper>
           <CertificationName>ISO 14001</CertificationName>
-          <CertificationDate>인증일: 2021년 5월</CertificationDate>
+          <CertificationDate>인증일: 준비중</CertificationDate>
           <CertificationDescription>
             환경 경영 시스템 국제 표준 인증
           </CertificationDescription>
@@ -145,8 +145,8 @@ const Certification = () => {
           <IconWrapper>
             <FaAward />
           </IconWrapper>
-          <CertificationName>기술혁신형 중소기업</CertificationName>
-          <CertificationDate>인증일: 2022년 7월</CertificationDate>
+          <CertificationName>벤쳐인증</CertificationName>
+          <CertificationDate>인증일: 준비중</CertificationDate>
           <CertificationDescription>
             기술 혁신 역량 우수 기업 인증
           </CertificationDescription>

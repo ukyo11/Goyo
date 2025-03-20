@@ -154,7 +154,7 @@ const SectionTitle = styled.h2`
 
 const CardGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -253,7 +253,7 @@ const LandingPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          최첨단 반도체 장비 솔루션
+          장비 위탁생산 전문 기업
         </Title>
         <Subtitle
           initial={{ opacity: 0, y: 20 }}
@@ -300,8 +300,8 @@ const LandingPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <h3>신속한 서비스</h3>
-            <p>24시간 고객 지원으로 신속하고 정확한 서비스를 제공합니다.</p>
+            <h3>원스톱 서비스</h3>
+            <p>가공,구매등 내재화를 통해 원스톱 서비스를 제공합니다.</p>
           </FeatureCard>
         </FeaturesGrid>
       </FeaturesSection>
@@ -313,36 +313,31 @@ const LandingPage = () => {
             <IconWrapper>
               <FaMicrochip />
             </IconWrapper>
-            <h3>가공 / 조립</h3>
-            <p>금속류, 판금 , Frame 가공 및 조립</p>
+            <h3>장비 사업부</h3>
+            <p>반도체 & 디스플레이 설비 제작</p>
+            <p>Total Solution 제공</p>
           </BusinessCard>
           <BusinessCard whileHover={{ y: -10 }}>
             <IconWrapper>
               <FaCogs />
             </IconWrapper>
-            <h3>기구/전장 조립,Set-up</h3>
-            <p>정밀 금속 가공 및 첨단 소재 처리</p>
+            <h3>금속가공 사업부</h3>
+            <p>설비 부품 정밀 가공</p>
           </BusinessCard>
           <BusinessCard whileHover={{ y: -10 }}>
             <IconWrapper>
               <FaAtom />
             </IconWrapper>
-            <h3>정밀세정</h3>
-            <p>Repair Part, 정밀 세정, Valve 세정 </p>
+            <h3>정밀세정 사업부</h3>
+            <p>설비부품 및 각종 Valve 표면 처리</p>
           </BusinessCard>
           <BusinessCard whileHover={{ y: -10 }}>
             <IconWrapper>
               <FaMicrochip />
             </IconWrapper>
-            <h3>취급 Parts</h3>
-            <p>COBETTER, Bronkhorst, TPC, PMI 다수 취급</p>
-          </BusinessCard>
-          <BusinessCard whileHover={{ y: -10 }}>
-            <IconWrapper>
-              <FaMicrochip />
-            </IconWrapper>
-            <h3>구매대행 서비스</h3>
-            <p>글로벌 소싱/해외 사업장 구매대행 </p>
+            <h3>파트판매 사업부</h3>
+            <p>장비사 대상 구매대행</p>
+            <p>글로벌 소싱/해외 사업장 구매대행</p>
           </BusinessCard>
         </CardGrid>
       </BusinessAreas>

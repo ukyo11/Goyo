@@ -310,7 +310,6 @@ const Navigation = () => {
       title: '고객지원',
       path: '/support',
       submenu: [
-        { title: 'FAQ', path: '/support/faq' },
         { title: '문의하기', path: '/support/contact' }
       ]
     }

@@ -22,9 +22,10 @@ const Title = styled.h2`
 `;
 
 const ContentWrapper = styled.div`
-  display: grid;
+  display: flex;
   gap: 3rem;
   align-items: center;
+  
   
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
@@ -90,9 +91,6 @@ const GreetingComponent = () => {
       <Section>
         <Title>인사말</Title>
         <ContentWrapper>
-          <ImageWrapper>
-            <img src="/images/ceo.jpg" alt="CEO" />
-          </ImageWrapper>
           <TextContent>
             <Greeting>
               "혁신적인 기술과 신뢰로 미래를 창조하는 기업이 되겠습니다"

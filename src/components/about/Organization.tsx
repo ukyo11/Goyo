@@ -107,20 +107,13 @@ const Organization = () => {
             <FaUserTie />
             <h3>대표이사</h3>
             <p>경영총괄</p>
+            <SubDepartments>
+              <SubDepartment>품질<br/>품질보증 및 관리</SubDepartment>
+            </SubDepartments>
           </Department>
         </Level>
 
-        <Level>
-          <Department
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            <FaUsers />
-            <h3>품질</h3>
-            <p>품질보증 및 관리</p>
-            
-          </Department>
-        </Level>
+ 
 
         <Level>
           <Department
