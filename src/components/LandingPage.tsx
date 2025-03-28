@@ -160,6 +160,12 @@ const CardGrid = styled.div`
   margin: 0 auto;
 `;
 
+const LinkWrapper = styled(Link)`
+  text-decoration: none;
+  height: 100%;
+  display: block;
+`;
+
 const BusinessCard = styled(motion.div)`
   background: white;
   padding: 2.5rem;
@@ -168,6 +174,11 @@ const BusinessCard = styled(motion.div)`
   box-shadow: var(--shadow-sm);
   text-align: center;
   transition: all 0.3s ease;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   
   &:hover {
     border-color: var(--primary-color);
@@ -309,36 +320,44 @@ const LandingPage = () => {
       <BusinessAreas>
         <SectionTitle>사업영역</SectionTitle>
         <CardGrid>
-          <BusinessCard whileHover={{ y: -10 }}>
-            <IconWrapper>
-              <FaMicrochip />
-            </IconWrapper>
-            <h3>장비 사업부</h3>
-            <p>반도체 & 디스플레이 설비 제작</p>
-            <p>Total Solution 제공</p>
-          </BusinessCard>
-          <BusinessCard whileHover={{ y: -10 }}>
-            <IconWrapper>
-              <FaCogs />
-            </IconWrapper>
-            <h3>금속가공 사업부</h3>
-            <p>설비 부품 정밀 가공</p>
-          </BusinessCard>
-          <BusinessCard whileHover={{ y: -10 }}>
-            <IconWrapper>
-              <FaAtom />
-            </IconWrapper>
-            <h3>정밀세정 사업부</h3>
-            <p>설비부품 및 각종 Valve 표면 처리</p>
-          </BusinessCard>
-          <BusinessCard whileHover={{ y: -10 }}>
-            <IconWrapper>
-              <FaMicrochip />
-            </IconWrapper>
-            <h3>파트판매 사업부</h3>
-            <p>장비사 대상 구매대행</p>
-            <p>글로벌 소싱/해외 사업장 구매대행</p>
-          </BusinessCard>
+          <LinkWrapper to="/business/equipment">
+            <BusinessCard whileHover={{ y: -10 }}>
+              <IconWrapper>
+                <FaMicrochip />
+              </IconWrapper>
+              <h3>장비 사업부</h3>
+              <p>반도체 & 디스플레이 설비 제작</p>
+              <p>Total Solution 제공</p>
+            </BusinessCard>
+          </LinkWrapper>
+          <LinkWrapper to="/business/metal">
+            <BusinessCard whileHover={{ y: -10 }}>
+              <IconWrapper>
+                <FaCogs />
+              </IconWrapper>
+              <h3>금속가공 사업부</h3>
+              <p>설비 부품 정밀 가공</p>
+            </BusinessCard>
+          </LinkWrapper>
+          <LinkWrapper to="/business/cleaning">
+            <BusinessCard whileHover={{ y: -10 }}>
+              <IconWrapper>
+                <FaAtom />
+              </IconWrapper>
+              <h3>정밀세정 사업부</h3>
+              <p>설비부품 및 각종 Valve 표면 처리</p>
+            </BusinessCard>
+          </LinkWrapper>
+          <LinkWrapper to="/business/parts">
+            <BusinessCard whileHover={{ y: -10 }}>
+              <IconWrapper>
+                <FaMicrochip />
+              </IconWrapper>
+              <h3>파트판매 사업부</h3>
+              <p>장비사 대상 구매대행</p>
+              <p>글로벌 소싱/해외 사업장 구매대행</p>
+            </BusinessCard>
+          </LinkWrapper>
         </CardGrid>
       </BusinessAreas>
 

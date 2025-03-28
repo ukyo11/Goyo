@@ -195,7 +195,7 @@ const Dropdown = styled.div`
   }
 `;
 
-const DropdownLink = styled(Link)<{ active?: boolean }>`
+const DropdownLink = styled(Link) <{ active?: boolean }>`
   color: ${props => props.active ? '#915cb3' : '#222222'};
   text-decoration: none;
   padding: 0.9rem 1.5rem;
@@ -286,7 +286,6 @@ const Navigation = () => {
         { title: '금속가공사업부', path: '/business/metal' },
         { title: '정밀세정사업부', path: '/business/cleaning' },
         { title: '부품판매사업부', path: '/business/parts' },
-        { title: '구매대행서비스', path: '/business/purchasing' }
       ]
     },
     {
