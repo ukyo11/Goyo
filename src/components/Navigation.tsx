@@ -329,7 +329,7 @@ const Navigation = () => {
     <Nav>
       <NavContainer>
         <Logo to="/">
-          <img src="images/logo.png" alt="GOYO Logo" />
+          <img src={`${process.env.NODE_ENV === 'production' ? '/goyo-web' : ''}/images/logo.png`} alt="GOYO Logo" />
         </Logo>
         <MenuButton onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <FaTimes /> : <FaBars />}
@@ -363,4 +363,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation; 
+export default Navigation;

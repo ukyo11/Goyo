@@ -107,7 +107,7 @@ const DetailItem = styled.li`
 `;
 
 const Clients = () => {
-  // 산업군 정렬 로직 제거
+  const imagePath = process.env.NODE_ENV === 'production' ? '/goyo-web' : '';
 
   return (
     <ClientsContainer>
@@ -122,7 +122,7 @@ const Clients = () => {
             transition={{ duration: 0.2 }}
           >
             {/* 로고만 표시 */}
-            <LogoImage src={`/goyo-web/images/customers/${client.logo}`} alt={`${client.name} 로고`} />
+            <LogoImage src={`${imagePath}/images/customers/${client.logo}`} alt={`${client.name} 로고`} />
             <CompanyDescription>{client.description}</CompanyDescription>
             <PartnershipDetails>
               {client.details.map((detail) => (

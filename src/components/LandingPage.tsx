@@ -353,7 +353,7 @@ const LandingPage = () => {
             <BusinessCard whileHover={{ y: -10 }}>
               <IconWrapper>
                 {/* Equipment Image from Pexels */}
-                <img src="/goyo-web/images/main/b1.png" alt="장비 사업부 아이콘" />
+                <img src={`${process.env.NODE_ENV === 'production' ? '/goyo-web' : ''}/images/main/b1.png`} alt="장비 사업부 아이콘" />
               </IconWrapper>
               <h3>장비 사업부</h3>
               <p>반도체 & 디스플레이 설비 제작</p>
@@ -364,7 +364,7 @@ const LandingPage = () => {
             <BusinessCard whileHover={{ y: -10 }}>
               <IconWrapper>
                 {/* Metal Processing Image from Pexels */}
-                <img src="/goyo-web/images/main/b2.png" alt="금속가공 사업부 아이콘" />
+                <img src={`${process.env.NODE_ENV === 'production' ? '/goyo-web' : ''}/images/main/b2.png`} alt="금속가공 사업부 아이콘" />
               </IconWrapper>
               <h3>금속가공 사업부</h3>
               <p>설비 부품 정밀 가공</p>
@@ -374,7 +374,7 @@ const LandingPage = () => {
             <BusinessCard whileHover={{ y: -10 }}>
               <IconWrapper>
                 {/* Cleaning Image from Pexels */}
-                <img src="/goyo-web/images/main/b3.png" alt="정밀세정 사업부 아이콘" />
+                <img src={`${process.env.NODE_ENV === 'production' ? '/goyo-web' : ''}/images/main/b3.png`} alt="정밀세정 사업부 아이콘" />
               </IconWrapper>
               <h3>정밀세정 사업부</h3>
               <p>설비부품 및 각종 Valve 표면 처리</p>
@@ -384,7 +384,7 @@ const LandingPage = () => {
             <BusinessCard whileHover={{ y: -10 }}>
               <IconWrapper>
                 {/* Parts Sales Image from Pexels */}
-                <img src="/goyo-web/images/main/b4.png" alt="파트판매 사업부 아이콘" />
+                <img src={`${process.env.NODE_ENV === 'production' ? '/goyo-web' : ''}/images/main/b4.png`} alt="파트판매 사업부 아이콘" />
               </IconWrapper>
               <h3>파트판매 사업부</h3>
               <p>장비사 대상 구매대행</p>

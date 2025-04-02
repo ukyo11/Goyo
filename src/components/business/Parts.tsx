@@ -204,6 +204,8 @@ const LogoGridInCell = styled.div`
 `;
 
 const Parts = () => {
+  const imagePath = process.env.NODE_ENV === 'production' ? '/goyo-web' : '';
+
   return (
     <Container>
       <Title>부품판매사업부 - 취급 품목</Title>
@@ -221,7 +223,7 @@ const Parts = () => {
             <TableRow key={index}>
               <TableCell className="maker-cell" data-label="Maker">
                 {part.logoFile ? (
-                  <LogoImage src={`/goyo-web/images/maker/logo/${part.logoFile}`} alt={`${part.maker} 로고`} />
+                  <LogoImage src={`${imagePath}/images/maker/logo/${part.logoFile}`} alt={`${part.maker} 로고`} />
                 ) : (
                   <span>{part.maker}</span> // 로고 없으면 텍스트 표시
                 )}
@@ -235,7 +237,7 @@ const Parts = () => {
                     {part.imageFiles.map((imgFile: string, imgIndex: number) => (
                       <ProductImage
                         key={imgIndex}
-                        src={`/goyo-web/images/maker/images/${imgFile}`}
+                        src={`${imagePath}/images/maker/images/${imgFile}`}
                         alt={`${part.maker} 제품 이미지 ${imgIndex + 1}`}
                       />
                     ))}
@@ -253,7 +255,7 @@ const Parts = () => {
                 {partsWithoutImages.map((part: PartData) => (
                   <LogoImage
                     key={part.maker}
-                    src={`/goyo-web/images/maker/logo/${part.logoFile}`}
+                    src={`${imagePath}/images/maker/logo/${part.logoFile}`}
                     alt={`${part.maker} 로고`}
                   />
                 ))}

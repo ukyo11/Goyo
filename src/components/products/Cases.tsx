@@ -70,11 +70,12 @@ const Image = styled.img`
 `;
 
 const Cases = () => {
+  const imagePath = process.env.NODE_ENV === 'production' ? '/goyo-web' : '';
   const images = [
-    { src: '/goyo-web/images/cases/cases1.png', alt: 'Case 1' },
-    { src: '/goyo-web/images/cases/cases2.png', alt: 'Case 2' },
-    { src: '/goyo-web/images/cases/cases3.png', alt: 'Case 3' },
-    { src: '/goyo-web/images/cases/cases4.png', alt: 'Case 4' },
+    { src: `${imagePath}/images/cases/cases1.png`, alt: 'Case 1' },
+    { src: `${imagePath}/images/cases/cases2.png`, alt: 'Case 2' },
+    { src: `${imagePath}/images/cases/cases3.png`, alt: 'Case 3' },
+    { src: `${imagePath}/images/cases/cases4.png`, alt: 'Case 4' },
   ];
 
   return (
