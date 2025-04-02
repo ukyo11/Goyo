@@ -221,7 +221,7 @@ const Parts = () => {
             <TableRow key={index}>
               <TableCell className="maker-cell" data-label="Maker">
                 {part.logoFile ? (
-                  <LogoImage src={`/goyo-web/images/maker/logo/${part.logoFile}`} alt={`${part.maker} 로고`} />
+                  <LogoImage src={`/goyo-web/images/maker/Logo/${part.logoFile}`} alt={`${part.maker} 로고`} />
                 ) : (
                   <span>{part.maker}</span> // 로고 없으면 텍스트 표시
                 )}
