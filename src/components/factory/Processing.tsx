@@ -1,15 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
-import { FaCogs, FaIndustry, FaTools, FaChartLine } from 'react-icons/fa';
+import styled, { css } from 'styled-components';
 import { colors } from '../../styles/colors';
 
 const Container = styled.div`
-  padding: .5rem;
-`;
-
-const Section = styled.section`
-  margin-bottom: 4rem;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: ${colors.background.main};
 `;
 
 const SectionTitle = styled.h2`
@@ -19,6 +17,7 @@ const SectionTitle = styled.h2`
   text-align: center;
   margin-bottom: 2rem;
 `;
+
 
 const Description = styled.p`
   color: ${colors.text.primary};
@@ -30,183 +29,118 @@ const Description = styled.p`
   margin: 0 auto 2rem;
 `;
 
-const Grid = styled.div`
+const ImageGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin: 2rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
 `;
 
-const Card = styled(motion.div)`
-  background: ${colors.background.card};
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px ${colors.shadow.light};
-  border: 2px solid ${colors.border.main};
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px ${colors.shadow.medium};
-    border-color: ${colors.primary.main};
-  }
-`;
-
-const IconWrapper = styled.div`
-  font-size: 2.5rem;
-  color: ${colors.primary.main};
-  margin-bottom: 1.5rem;
-  text-align: center;
-`;
-
-const CardTitle = styled.h3`
-  color: ${colors.text.primary};
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  text-align: center;
-`;
-
-const SpecList = styled.ul`
-  list-style: none;
-  padding: 0;
-`;
-
-const SpecItem = styled.li`
-  color: ${colors.text.primary};
-  font-size: 1.1rem;
-  padding: 0.8rem 0;
-  border-bottom: 1px solid ${colors.border.main};
+const ImageContainer = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
-
-  &:last-child {
-    border-bottom: none;
-  }
-
-  &::before {
-    content: "•";
-    color: ${colors.primary.main};
-    font-weight: bold;
-    font-size: 1.4rem;
-    margin-right: 0.8rem;
-  }
+  background-color: ${colors.background.card};
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
-const CapabilitySection = styled.div`
-  margin-top: 4rem;
+const Image = styled.img`
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  display: block;
 `;
 
-const CapabilityGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
 `;
 
-const CapabilityCard = styled(motion.div)`
-  background: ${colors.background.card};
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px ${colors.shadow.light};
-  border: 2px solid ${colors.border.main};
-  text-align: center;
+const TableRow = styled.tr`
+`;
 
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px ${colors.shadow.medium};
-    border-color: ${colors.primary.main};
+const TableCell = styled.td`
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: left;
+  font-size: 14px;
+  
+  &:first-child {
+    background-color: #f2f2f2;
   }
 `;
 
 const Processing = () => {
+  const images = [
+    { src: '/goyo-web/images/processing/p1.png', alt: 'Processing 1', no: '5호기 (고속)', maker: '현대위아', spec: 'RPM : 40,000', qty: '10 대' },
+    { src: '/goyo-web/images/processing/p2.png', alt: 'Processing 2', no: '5.5호기', maker: '현대위아', spec: '1300 x 570', qty: '5 대' },
+    { src: '/goyo-web/images/processing/p3.png', alt: 'Processing 3', no: '6.5호기', maker: '현대위아', spec: '1500 x 660', qty: '2 대' },
+    { src: '/goyo-web/images/processing/p4.png', alt: 'Processing 4', no: '7.5호기', maker: '현대위아', spec: '1650 x 760', qty: '1 대' },
+    { src: '', alt: 'Processing 5', no: '', maker: '', spec: '', qty: '' },
+    { src: '', alt: 'Processing 6', no: '범용 선반', maker: '현대위아', spec: '480', qty: '3 대' },
+    { src: '', alt: 'Processing 7', no: '범용 선반', maker: '현대위아', spec: '560', qty: '2 대' },
+    { src: '', alt: 'Processing 8', no: '레이저 각인기', maker: '쏠레이저', spec: '', qty: '1 대' },
+  ];
+
+  const allImages = Array.from({ length: 8 }, (_, i) => images[i] || {});
+
   return (
     <Container>
-      <Section>
-        <SectionTitle>가공시설</SectionTitle>
-        <Description>
-          최첨단 가공 설비와 전문 기술력으로 고정밀 부품 가공을 실현합니다.
+      <SectionTitle>가공 설비 현황</SectionTitle>
+      <Description>
+      최첨단 가공 설비와 전문 기술력으로 고정밀 부품 가공을 실현합니다.
         </Description>
-        <Grid>
-          <Card whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
-            <IconWrapper>
-              <FaCogs />
-            </IconWrapper>
-            <CardTitle>CNC 가공 설비</CardTitle>
-            <SpecList>
-              <SpecItem>5축 머시닝센터</SpecItem>
-              <SpecItem>CNC 선반</SpecItem>
-              <SpecItem>와이어컷팅기</SpecItem>
-            </SpecList>
-          </Card>
-
-          <Card whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
-            <IconWrapper>
-              <FaTools />
-            </IconWrapper>
-            <CardTitle>정밀 가공 설비</CardTitle>
-            <SpecList>
-              <SpecItem>연삭기</SpecItem>
-              <SpecItem>방전가공기</SpecItem>
-              <SpecItem>레이저 가공기</SpecItem>
-            </SpecList>
-          </Card>
-
-          <Card whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
-            <IconWrapper>
-              <FaIndustry />
-            </IconWrapper>
-            <CardTitle>측정 설비</CardTitle>
-            <SpecList>
-              <SpecItem>3차원 측정기</SpecItem>
-              <SpecItem>표면조도 측정기</SpecItem>
-              <SpecItem>형상 측정기</SpecItem>
-            </SpecList>
-          </Card>
-        </Grid>
-      </Section>
-
-      <CapabilitySection>
-        <SectionTitle>가공 역량</SectionTitle>
-        <CapabilityGrid>
-          <CapabilityCard whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
-            <IconWrapper>
-              <FaChartLine />
-            </IconWrapper>
-            <CardTitle>정밀도</CardTitle>
-            <SpecList>
-              <SpecItem>가공 공차: ±0.01mm</SpecItem>
-              <SpecItem>표면 조도: Ra 0.4</SpecItem>
-              <SpecItem>진원도: 0.005mm</SpecItem>
-            </SpecList>
-          </CapabilityCard>
-
-          <CapabilityCard whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
-            <IconWrapper>
-              <FaIndustry />
-            </IconWrapper>
-            <CardTitle>가공 범위</CardTitle>
-            <SpecList>
-              <SpecItem>최대 크기: 1000×1000mm</SpecItem>
-              <SpecItem>최대 중량: 500kg</SpecItem>
-              <SpecItem>다품종 소량 생산 가능</SpecItem>
-            </SpecList>
-          </CapabilityCard>
-
-          <CapabilityCard whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
-            <IconWrapper>
-              <FaCogs />
-            </IconWrapper>
-            <CardTitle>소재 대응</CardTitle>
-            <SpecList>
-              <SpecItem>알루미늄/스테인리스</SpecItem>
-              <SpecItem>티타늄/인코넬</SpecItem>
-              <SpecItem>특수강/초경합금</SpecItem>
-            </SpecList>
-          </CapabilityCard>
-        </CapabilityGrid>
-      </CapabilitySection>
+      <ImageGrid>
+        {allImages.map((image, index) => (
+          <ImageContainer
+            key={index}
+            {...image}
+            style={
+              !(image.no || image.maker || image.qty)
+                ? { border: 'none', boxShadow: 'none' }
+                : {}
+            }
+          >
+            {image.src && <Image src={image.src} alt={image.alt} />}
+            <Table>
+              <tbody>
+                {image.no && image.maker && image.qty &&(
+                  <>
+                  <TableRow>
+                    <TableCell>No</TableCell>
+                    <TableCell style={{ fontWeight: 'bold', fontSize: '16px' }}>
+                      {image.no}
+                    </TableCell>
+                  </TableRow>
+             
+                  <TableRow>
+                    <TableCell>Maker</TableCell>
+                    <TableCell>{image.maker}</TableCell>
+                  </TableRow>
+            
+                  <TableRow>
+                    <TableCell>Spec</TableCell>
+                    <TableCell>{image.spec}</TableCell>
+                  </TableRow>
+           
+                  <TableRow>
+                    <TableCell>Qty</TableCell>
+                    <TableCell>{image.qty}</TableCell>
+                  </TableRow>
+                  </>
+                )}
+              </tbody>
+            </Table>
+          </ImageContainer>
+        ))}
+      </ImageGrid>
     </Container>
   );
 };
 
-export default Processing; 
+export default Processing;

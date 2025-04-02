@@ -292,7 +292,7 @@ const Navigation = () => {
       title: '생산시설',
       path: '/factory',
       submenu: [
-        { title: '가공시설', path: '/factory/processing' },
+        { title: '가공 설비 현황', path: '/factory/processing' },
         { title: '조립시설', path: '/factory/assembly' },
         { title: '세정시설', path: '/factory/cleaning' }
       ]
@@ -302,7 +302,7 @@ const Navigation = () => {
       path: '/products',
       submenu: [
         { title: '취급 부품/파트', path: '/products/parts' },
-        { title: '설비 제작 사례', path: '/products/cases' }
+        { title: '설비 조립', path: '/products/cases' }
       ]
     },
     {

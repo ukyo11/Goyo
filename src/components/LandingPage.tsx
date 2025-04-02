@@ -170,6 +170,8 @@ const LinkWrapper = styled(Link)`
 const BusinessCard = styled(motion.div)`
   background: white;
   padding: 2.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   border-radius: 15px;
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-sm);
@@ -198,6 +200,10 @@ const BusinessCard = styled(motion.div)`
     color: var(--text-medium);
     line-height: 1.6;
     font-size: 1.1rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem; /* Adjust padding for smaller screens */
   }
 `;
 
