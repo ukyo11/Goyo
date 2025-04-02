@@ -85,6 +85,48 @@ const Signature = styled.div`
   }
 `;
 
+const PrinciplesSection = styled.div`
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background-color: ${colors.background.light};
+  border-radius: 8px;
+`;
+
+const PrincipleItem = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const Keyword = styled.span`
+  display: inline-block;
+  background-color: ${colors.primary.main};
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  font-weight: 700;
+  margin-right: 1.5rem;
+  min-width: 80px; /* 최소 너비 설정 */
+  text-align: center;
+  font-size: 1.1rem;
+`;
+
+const Description = styled.span`
+  font-size: 1.1rem;
+  color: ${colors.text.primary};
+  line-height: 1.6;
+
+  strong {
+    color: ${colors.primary.main}; /* 강조 색상 (primary.main으로 변경) */
+    font-weight: 600;
+  }
+`;
+
+
 const GreetingComponent = () => {
   return (
     <Container>
@@ -111,6 +153,20 @@ const GreetingComponent = () => {
                 다하겠습니다.
               </p>
             </Message>
+            <PrinciplesSection>
+              <PrincipleItem>
+                <Keyword>기술</Keyword>
+                <Description>동종 업계 최고수준의 기술 인력</Description>
+              </PrincipleItem>
+              <PrincipleItem>
+                <Keyword>신속</Keyword>
+                <Description>고객의 요구에 부응하고 <strong>신속한</strong> 업무 대응</Description>
+              </PrincipleItem>
+              <PrincipleItem>
+                <Keyword>정직</Keyword>
+                <Description>고요의 가장 중요하게 여기는 기업가치로 <strong>고객</strong>이 만족할 때 까지</Description>
+              </PrincipleItem>
+            </PrinciplesSection>
             <Signature>
               <div className="position">대표이사</div>
               <div className="name">이 철 봉</div>
@@ -122,4 +178,4 @@ const GreetingComponent = () => {
   );
 };
 
-export default GreetingComponent; 
+export default GreetingComponent;

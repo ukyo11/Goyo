@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaIndustry, FaTools, FaMicrochip, FaHandshake, FaCogs, FaAtom } from 'react-icons/fa';
+// Removed unused FaIndustry, FaTools, FaHandshake. Icons in BusinessAreas will be replaced by images.
+import { FaMicrochip, FaCogs, FaHandshake } from 'react-icons/fa'; // Keep FaMicrochip, FaCogs, FaHandshake for CoreValues for now
 
 const Container = styled.div`
   min-height: 100vh;
@@ -179,6 +180,7 @@ const BusinessCard = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center; // Add this line to center items horizontally
   
   &:hover {
     border-color: var(--primary-color);
@@ -199,13 +201,31 @@ const BusinessCard = styled(motion.div)`
   }
 `;
 
+// Adjusted IconWrapper to handle both SVG icons and images
 const IconWrapper = styled.div`
-  font-size: 2.5rem;
-  color: #915cb3;
+  font-size: 2.5rem; // Keep for SVG icons in CoreValues
+  color: #915cb3; // Keep for SVG icons in CoreValues
   margin-bottom: 1.5rem;
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px; // Set width for circle
+  height: 80px; // Set height for circle (equal to width)
+  border-radius: 50%; // Make it circular
+  overflow: hidden; // Clip the image corners
+  background-color: #f0e6f6; // Optional: Add a light background color
+  // Removed margin-left/right: auto; rely on parent's align-items: center
+
   svg {
     filter: drop-shadow(0 2px 4px rgba(145, 92, 179, 0.2));
+    width: 40px; // Consistent size for SVGs
+    height: 40px;
+  }
+
+  img {
+    width: 100%; // Make image fill the circle width
+    height: 100%; // Make image fill the circle height
+    object-fit: cover; // Cover the area, potentially cropping
   }
 `;
 
@@ -224,9 +244,12 @@ const ValueGrid = styled.div`
 `;
 
 const ValueCard = styled(motion.div)`
-  text-align: center;
+  text-align: center; // Keep text centered by default
   padding: 2.5rem;
   background: white;
+  display: flex; // Make it a flex container
+  flex-direction: column; // Stack items vertically
+  align-items: center; // Center items horizontally
   border-radius: 15px;
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-sm);
@@ -323,7 +346,8 @@ const LandingPage = () => {
           <LinkWrapper to="/business/equipment">
             <BusinessCard whileHover={{ y: -10 }}>
               <IconWrapper>
-                <FaMicrochip />
+                {/* Equipment Image from Pexels */}
+                <img src="/goyo-web/images/main/b1.png" alt="장비 사업부 아이콘" />
               </IconWrapper>
               <h3>장비 사업부</h3>
               <p>반도체 & 디스플레이 설비 제작</p>
@@ -333,7 +357,8 @@ const LandingPage = () => {
           <LinkWrapper to="/business/metal">
             <BusinessCard whileHover={{ y: -10 }}>
               <IconWrapper>
-                <FaCogs />
+                {/* Metal Processing Image from Pexels */}
+                <img src="/goyo-web/images/main/b2.png" alt="금속가공 사업부 아이콘" />
               </IconWrapper>
               <h3>금속가공 사업부</h3>
               <p>설비 부품 정밀 가공</p>
@@ -342,7 +367,8 @@ const LandingPage = () => {
           <LinkWrapper to="/business/cleaning">
             <BusinessCard whileHover={{ y: -10 }}>
               <IconWrapper>
-                <FaAtom />
+                {/* Cleaning Image from Pexels */}
+                <img src="/goyo-web/images/main/b3.png" alt="정밀세정 사업부 아이콘" />
               </IconWrapper>
               <h3>정밀세정 사업부</h3>
               <p>설비부품 및 각종 Valve 표면 처리</p>
@@ -351,7 +377,8 @@ const LandingPage = () => {
           <LinkWrapper to="/business/parts">
             <BusinessCard whileHover={{ y: -10 }}>
               <IconWrapper>
-                <FaMicrochip />
+                {/* Parts Sales Image from Pexels */}
+                <img src="/goyo-web/images/main/b4.png" alt="파트판매 사업부 아이콘" />
               </IconWrapper>
               <h3>파트판매 사업부</h3>
               <p>장비사 대상 구매대행</p>
@@ -400,4 +427,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage; 
+export default LandingPage;

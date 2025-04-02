@@ -1,8 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FaBuilding, FaIndustry, FaMicrochip, FaCar } from 'react-icons/fa';
+// 사용하지 않는 아이콘 import 제거
 import { colors } from '../../styles/colors';
+
+// 고객사 데이터 정의 (로고 있는 고객사만 포함)
+const clientsData = [
+  { name: '삼성전자', logo: 'samsung.png', industry: '전자', description: '글로벌 전자기기 제조사', details: ['반도체 장비 공급', '스마트팩토리 솔루션', '기술 혁신 협력'] },
+  { name: 'SK하이닉스', logo: 'sk.png', industry: '전자', description: '메모리 반도체 전문기업', details: ['생산설비 공급', '공정 자동화 시스템', '품질 관리 협력'] },
+  { name: 'DMS', logo: 'dms.png', industry: '기타', description: '디스플레이/반도체 장비 전문', details: ['장비 공급', '기술 지원'] },
+  { name: 'Luken', logo: 'luken.png', industry: '기타', description: '산업용 로봇 시스템', details: ['자동화 솔루션 제공', '유지보수 계약'] },
+  { name: 'TES', logo: 'tes.png', industry: '기타', description: '반도체 전공정 장비', details: ['PECVD 장비 공급', '기술 협력'] },
+];
+
+// 산업별 그룹화 로직 제거
 
 const ClientsContainer = styled.div`
   padding: .5rem;
@@ -19,22 +30,7 @@ const Title = styled.h2`
   text-shadow: 0 2px 4px ${colors.shadow.text};
 `;
 
-const IndustrySection = styled.div`
-  margin-bottom: 4rem;
-`;
-
-const IndustryTitle = styled.h3`
-  color: ${colors.primary.main};
-  font-size: 1.8rem;
-  font-weight: 700;
-  text-align: center;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  background: ${colors.background.light};
-  border-radius: 12px;
-  box-shadow: 0 4px 8px ${colors.shadow.light};
-  border: 2px solid ${colors.primary.main};
-`;
+// IndustrySection, IndustryTitle 제거
 
 const ClientGrid = styled.div`
   display: grid;
@@ -58,10 +54,15 @@ const ClientCard = styled(motion.div)`
   }
 `;
 
-const IconWrapper = styled.div`
-  font-size: 2.5rem;
-  color: ${colors.primary.main};
+// IconWrapper 제거
+
+// 로고 이미지 스타일 추가
+const LogoImage = styled.img`
+  height: 50px; // 로고 높이 조절
+  width: auto;
+  max-width: 150px;
   margin-bottom: 1.5rem;
+  object-fit: contain;
 `;
 
 const CompanyName = styled.h4`
@@ -106,134 +107,33 @@ const DetailItem = styled.li`
 `;
 
 const Clients = () => {
+  // 산업군 정렬 로직 제거
+
   return (
     <ClientsContainer>
       <Title>주요 고객사</Title>
 
-      <IndustrySection>
-        <IndustryTitle>제조업</IndustryTitle>
-        <ClientGrid>
+      {/* 단일 ClientGrid로 모든 고객사 표시 */}
+      <ClientGrid>
+        {clientsData.map((client) => (
           <ClientCard
+            key={client.name}
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.2 }}
           >
-            <IconWrapper>
-              <FaIndustry />
-            </IconWrapper>
-            <CompanyName>현대중공업</CompanyName>
-            <CompanyDescription>
-              조선해양 분야 글로벌 리더
-            </CompanyDescription>
+            {/* 로고만 표시 */}
+            <LogoImage src={`/goyo-web/images/customers/${client.logo}`} alt={`${client.name} 로고`} />
+            <CompanyDescription>{client.description}</CompanyDescription>
             <PartnershipDetails>
-              <DetailItem>주요 설비 공급</DetailItem>
-              <DetailItem>기술 협력 파트너십</DetailItem>
-              <DetailItem>공동 연구 개발</DetailItem>
+              {client.details.map((detail) => (
+                <DetailItem key={detail}>{detail}</DetailItem>
+              ))}
             </PartnershipDetails>
           </ClientCard>
-
-          <ClientCard
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.2 }}
-          >
-            <IconWrapper>
-              <FaBuilding />
-            </IconWrapper>
-            <CompanyName>포스코</CompanyName>
-            <CompanyDescription>
-              세계적인 철강 기업
-            </CompanyDescription>
-            <PartnershipDetails>
-              <DetailItem>설비 유지보수</DetailItem>
-              <DetailItem>품질 관리 시스템</DetailItem>
-              <DetailItem>생산성 향상 협력</DetailItem>
-            </PartnershipDetails>
-          </ClientCard>
-        </ClientGrid>
-      </IndustrySection>
-
-      <IndustrySection>
-        <IndustryTitle>전자</IndustryTitle>
-        <ClientGrid>
-          <ClientCard
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.2 }}
-          >
-            <IconWrapper>
-              <FaMicrochip />
-            </IconWrapper>
-            <CompanyName>삼성전자</CompanyName>
-            <CompanyDescription>
-              글로벌 전자기기 제조사
-            </CompanyDescription>
-            <PartnershipDetails>
-              <DetailItem>반도체 장비 공급</DetailItem>
-              <DetailItem>스마트팩토리 솔루션</DetailItem>
-              <DetailItem>기술 혁신 협력</DetailItem>
-            </PartnershipDetails>
-          </ClientCard>
-
-          <ClientCard
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.2 }}
-          >
-            <IconWrapper>
-              <FaMicrochip />
-            </IconWrapper>
-            <CompanyName>SK하이닉스</CompanyName>
-            <CompanyDescription>
-              메모리 반도체 전문기업
-            </CompanyDescription>
-            <PartnershipDetails>
-              <DetailItem>생산설비 공급</DetailItem>
-              <DetailItem>공정 자동화 시스템</DetailItem>
-              <DetailItem>품질 관리 협력</DetailItem>
-            </PartnershipDetails>
-          </ClientCard>
-        </ClientGrid>
-      </IndustrySection>
-
-      <IndustrySection>
-        <IndustryTitle>자동차</IndustryTitle>
-        <ClientGrid>
-          <ClientCard
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.2 }}
-          >
-            <IconWrapper>
-              <FaCar />
-            </IconWrapper>
-            <CompanyName>현대자동차</CompanyName>
-            <CompanyDescription>
-              글로벌 자동차 제조사
-            </CompanyDescription>
-            <PartnershipDetails>
-              <DetailItem>자동화 설비 공급</DetailItem>
-              <DetailItem>생산라인 최적화</DetailItem>
-              <DetailItem>스마트팩토리 구축</DetailItem>
-            </PartnershipDetails>
-          </ClientCard>
-
-          <ClientCard
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.2 }}
-          >
-            <IconWrapper>
-              <FaCar />
-            </IconWrapper>
-            <CompanyName>기아</CompanyName>
-            <CompanyDescription>
-              혁신적인 자동차 기업
-            </CompanyDescription>
-            <PartnershipDetails>
-              <DetailItem>생산설비 현대화</DetailItem>
-              <DetailItem>품질관리 시스템</DetailItem>
-              <DetailItem>기술 협력 강화</DetailItem>
-            </PartnershipDetails>
-          </ClientCard>
-        </ClientGrid>
-      </IndustrySection>
+        ))}
+      </ClientGrid>
     </ClientsContainer>
   );
 };
 
-export default Clients; 
+export default Clients;
