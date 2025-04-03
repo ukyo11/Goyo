@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaPaperPlane, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import { colors } from '../../styles/colors';
+import emailjs from 'emailjs-com'; // EmailJS import 추가
 
 const Container = styled.div`
   padding: 2rem;
@@ -153,8 +154,31 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // 여기에 폼 제출 로직 추가
-    console.log('Form submitted:', formData);
+
+    // EmailJS 초기화 (본인의 Public Key로 변경)
+    emailjs.init("Ablk9BNc5JgOqmUG_");
+
+    // EmailJS 파라미터 (본인의 Service ID, Template ID로 변경)
+    const serviceId = "service_m43l6ac";
+    const templateId = "template_yaz0r6s";
+
+    // EmailJS에 보낼 파라미터
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      from_phone: formData.phone,
+      subject: formData.subject,
+      message: formData.message
+    };
+
+    emailjs.send(serviceId, templateId, templateParams)
+      .then((response) => {
+        console.log('Email sent successfully!', response.status, response.text);
+        alert('문의가 성공적으로 접수되었습니다!');
+      }, (err) => {
+        console.log('Failed to send email:', err);
+        alert('문의 접수에 실패했습니다. 다시 시도해주세요.');
+      });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -267,4 +291,4 @@ const Contact = () => {
   );
 };
 
-export default Contact; 
+export default Contact;
