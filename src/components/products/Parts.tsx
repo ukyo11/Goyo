@@ -97,17 +97,24 @@ const brandParts = [
     logo: '/images/parts/logo/pmi.png',
     categories: [
       {
-        name: '액추에이터',
+        name: '액츄레이터',
         products: [
-          { name: 'KM 시리즈', image: '/images/parts/products/pmi_image1.png' },
-          { name: 'SKM 스틸 볼 체인식', image: '/images/parts/products/pmi_image2.png' },
+          { name: 'KM 시리즈', image: '/images/parts/products/pmi1.png' },
+          { name: 'SKM 스틸 볼 체인식', image: '/images/parts/products/pmi2.png' },
+          { name: '엑츄에이터 CKM 클린타입 시리즈', image: '/images/parts/products/pmi3.png' },
         ],
       },
        {
         name: '볼스크류',
         products: [
-          { name: '내부 순환 시리즈', image: '/images/parts/products/pmi_image3.png' },
-          { name: '엔드 플러그 시리즈', image: '/images/parts/products/pmi_image4.png' },
+          { name: '내부 순환 시리즈', image: '/images/parts/products/pmi4.png' },
+          { name: '엔드 플러그 시리즈', image: '/images/parts/products/pmi5.png' },
+          { name: '외부 순환 시리즈', image: '/images/parts/products/pmi6.png' },
+          { name: '하이리드 볼스크류', image: '/images/parts/products/pmi7.png' },
+          { name: '저소음형', image: '/images/parts/products/pmi8.png' },
+          { name: '엔드 캡 시리즈', image: '/images/parts/products/pmi9.png' },
+          { name: '고부하 시리즈', image: '/images/parts/products/pmi10.png' },
+          { name: '미니 시리즈', image: '/images/parts/products/pmi11.png' },
         ],
       },
     ],
@@ -137,9 +144,9 @@ const brandParts = [
       {
         name: '파카 제품',
         products: [
-          { name: 'Regulator', image: '/images/parts/products/parker_image1.png' },
-          { name: 'Air / Manual Valve', image: '/images/parts/products/parker_image1.png' },
-           { name: 'Check Valve', image: '/images/parts/products/parker_image1.png' },
+          { name: 'Regulator', image: '/images/parts/products/parker1.png' },
+          { name: 'Air / Manual Valve', image: '/images/parts/products/parker2.png' },
+           { name: 'Check Valve', image: '/images/parts/products/parker3.png' },
         ],
       },
     ],
@@ -171,19 +178,56 @@ const brandParts = [
       {
         name: 'BEARINGS',
         products: [
-          { name: '베어링', image: '/images/parts/products/iko_image1.png' },
+          { name: '', image: '/images/parts/products/iko1.png' },
         ],
       },
       {
         name: 'POSITIONING TABLES',
         products: [
-          { name: '포지셔닝 테이블', image: '/images/parts/products/iko_image2.png' },
+          { name: '', image: '/images/parts/products/iko2.png' },
         ],
       },
       {
         name: '직동시리즈',
         products: [
-          { name: '직동 시리즈', image: '/images/parts/products/iko_image3.png' },
+          { name: '', image: '/images/parts/products/iko3.png' },
+          { name: '', image: '/images/parts/products/iko4.png' },
+        ],
+      },
+    ],
+  },
+  {
+    brand: 'SPG',
+    logo: '/images/parts/logo/spg.png',
+    categories: [
+      {
+        name: 'ROBOT REDUCER',
+        products: [
+          { name: '', image: '/images/parts/products/spg1.png' },
+          { name: '', image: '/images/parts/products/spg2.png' },          
+        ],
+      },
+      {
+        name: 'PLANETARY GEARHEAD',
+        products: [
+          { name: '', image: '/images/parts/products/spg3.png' },
+          { name: '', image: '/images/parts/products/spg4.png' },          
+        ],
+      },
+      {
+        name: 'MOTOR',
+        products: [
+          { name: '', image: '/images/parts/products/spg5.png' },
+          { name: '', image: '/images/parts/products/spg6.png' },     
+          { name: '', image: '/images/parts/products/spg7.png' },      
+        ],
+      },
+      {
+        name: 'GEAR HEAD',
+        products: [
+          { name: '', image: '/images/parts/products/spg8.png' },
+          { name: '', image: '/images/parts/products/spg9.png' },     
+          { name: '', image: '/images/parts/products/spg10.png' },      
         ],
       },
     ],
