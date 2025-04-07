@@ -366,8 +366,6 @@ const TopDivider = styled.hr`
 `;
 
 const ProductParts = () => {
-  const imagePath = process.env.NODE_ENV === 'production' ? '/goyo-web' : '';
-
   return (
     <Container>
       <Section>
@@ -378,7 +376,7 @@ const ProductParts = () => {
         <TopDivider /> {/* 구분선 추가 */}
         {brandParts.map((brand, index) => (
           <BrandContainer key={brand.brand}>
-            <Brandlogo src={`${imagePath}${brand.logo}`} alt={brand.brand} />
+            <Brandlogo src={brand.logo} alt={brand.brand} />
             {brand.categories.map((category) => (
               <CategoryContainer key={category.name}>
                 <CategoryTitle>{category.name}</CategoryTitle>
@@ -389,7 +387,7 @@ const ProductParts = () => {
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <ProductImage src={`${imagePath}${product.image}`} alt={product.name} />
+                      <ProductImage src={product.image} alt={product.name} />
                       <ProductName>{product.name}</ProductName>
                     </ProductCard>
                   ))}

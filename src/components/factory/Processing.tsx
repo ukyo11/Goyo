@@ -76,12 +76,11 @@ const TableCell = styled.td`
 `;
 
 const Processing = () => {
-  const imagePath = process.env.NODE_ENV === 'production' ? '/goyo-web' : '';
   const images = [
-    { src: `${imagePath}/images/processing/p1.png`, alt: 'Processing 1', no: '5호기 (고속)', maker: '현대위아', spec: 'RPM : 40,000', qty: '10 대' },
-    { src: `${imagePath}/images/processing/p2.png`, alt: 'Processing 2', no: '5.5호기', maker: '현대위아', spec: '1300 x 570', qty: '5 대' },
-    { src: `${imagePath}/images/processing/p3.png`, alt: 'Processing 3', no: '6.5호기', maker: '현대위아', spec: '1500 x 660', qty: '2 대' },
-    { src: `${imagePath}/images/processing/p4.png`, alt: 'Processing 4', no: '7.5호기', maker: '현대위아', spec: '1650 x 760', qty: '1 대' },
+    { src: `/images/processing/p1.png`, alt: 'Processing 1', no: '5호기 (고속)', maker: '현대위아', spec: 'RPM : 40,000', qty: '10 대' },
+    { src: `/images/processing/p2.png`, alt: 'Processing 2', no: '5.5호기', maker: '현대위아', spec: '1300 x 570', qty: '5 대' },
+    { src: `/images/processing/p3.png`, alt: 'Processing 3', no: '6.5호기', maker: '현대위아', spec: '1500 x 660', qty: '2 대' },
+    { src: `/images/processing/p4.png`, alt: 'Processing 4', no: '7.5호기', maker: '현대위아', spec: '1650 x 760', qty: '1 대' },
     { src: '', alt: 'Processing 5', no: '', maker: '', spec: '', qty: '' },
     { src: '', alt: 'Processing 6', no: '범용 선반', maker: '현대위아', spec: '480', qty: '3 대' },
     { src: '', alt: 'Processing 7', no: '범용 선반', maker: '현대위아', spec: '560', qty: '2 대' },

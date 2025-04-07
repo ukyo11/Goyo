@@ -107,8 +107,6 @@ const DetailItem = styled.li`
 `;
 
 const Clients = () => {
-  const imagePath = process.env.NODE_ENV === 'production' ? '/goyo-web' : '';
-
   return (
     <ClientsContainer>
       <Title>주요 고객사</Title>
@@ -122,7 +120,7 @@ const Clients = () => {
             transition={{ duration: 0.2 }}
           >
             {/* 로고만 표시 */}
-            <LogoImage src={`${imagePath}/images/customers/${client.logo}`} alt={`${client.name} 로고`} />
+            <LogoImage src={`/images/customers/${client.logo}`} alt={`${client.name} 로고`} />
             <CompanyDescription>{client.description}</CompanyDescription>
             <PartnershipDetails>
               {client.details.map((detail) => (
