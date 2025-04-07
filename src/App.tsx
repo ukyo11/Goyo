@@ -30,7 +30,7 @@ import Contact from './components/support/Contact';
 
 function App() {
   return (
-    <Router basename="/goyo-web">
+    <Router basename="/">
       <div className="App">
         <Navigation />
         <Routes>
